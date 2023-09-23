@@ -1,22 +1,23 @@
-# tooling
+numpy
+pandas
+matplotlib
+seaborn
 
+ipythontutor
+nbautoeval
+
+#
+# jupyter basics
+#
 jupyterlab
 notebook
-# not yet released (or install with pip install --pre)
-/Users/tparment/git/jupytext/dist/jupytext-1.15.0.dev2-py3-none-any.whl
+jupytext
 jupyterlab-myst
-
-# not installing this at once,
-# and installing afterwards, seems to work better
 jupyterlab-courselevels
 
-# contents
-ipympl
-matplotlib
 ipywidgets >= 8.0
+ipympl
 
-# for examples
-sphinxcontrib_mermaid
 ipythontutor
 nbautoeval
 
