@@ -1,12 +1,9 @@
 format: jb-book
 parts:
-# randomly take one .py and one .md
-# from the actual courses
 - caption: real stuff
   chapters:
-  - file: 1-01-os-terminal-nb
-  - file: 1-01-numpy-introduction-nb
-- caption: sandbox chapter
+  - glob: 1-[0-9]*
+- caption: recipes
   chapters:
-  - glob: sandbox-[0-9]*-nb
+  - glob: 2-[0-9]*
 root: 0-00-intro-nb

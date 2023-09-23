@@ -1,12 +1,18 @@
 ---
 tracks:
-- description: notebook 7 on top of jlab 4
+- description: jlab4 examples
   id: jlab4-nb7
-  name: Notebook7
+  name: Jlab4 examples
   sections:
-  - name: sample
+  - name: real stuff
+    # one note on using rtd, plus
+    # randomly take one .py and one .md
+    # from the actual courses
     notebooks:
-    - examples/sandbox-nb.md
+    - 1-[0-9]*.md
+  - name: recipes
+    notebooks:
+    - 2-[0-9]*.md
 
 builds:
   - id: nb7
