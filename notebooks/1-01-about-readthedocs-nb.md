@@ -77,6 +77,15 @@ not before - and the webhook got added automatically, and I was all set
 
 +++
 
+## postscriptum
+
+on a later attempt, I could see no importable repo at all - had to unselect the
+`conda-forge` thingy in the 'filter repositories' box
+
+go figure...
+
++++
+
 ## final trick
 
 within the rtd builds page, for using the whole width, type in the console
