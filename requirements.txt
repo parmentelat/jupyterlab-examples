@@ -4,25 +4,16 @@ numpy
 pandas
 matplotlib
 seaborn
-
-ipythontutor
-nbautoeval
-
-#
-# jupyter basics
-#
-jupyterlab
-notebook
-jupytext
-jupyterlab-myst
-jupyterlab-courselevels
-
 ipywidgets >= 8.0
 ipympl
 
 ipythontutor
 nbautoeval
 
-# would be useful for vs-code but creates some trouble
-# as jupyterlab looses its toolbar, so let's keep it out for now
-# ipykernel
+jupyter
+jupytext
+jupyterlab-myst
+jupyterlab-courselevels
+jupyterlab-tpt
+jupyter-book
+sphinxcontrib-mermaid
