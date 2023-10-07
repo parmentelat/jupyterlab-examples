@@ -31,7 +31,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
-## the MyST download role 
+## the MyST download role
 
 +++ {"tags": []}
 
