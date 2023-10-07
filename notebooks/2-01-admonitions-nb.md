@@ -211,3 +211,98 @@ and the rest of the message is just mentioned directly in the &lt;details&gt; ta
 </details>
 
 however **do not use this** as apparently this requires extra configuration...
+
++++
+
+## exercises
+
++++
+
+### native MyST exercise
+
++++
+
+````{warning}
+as of 2023 oct, this does not render properly under jupyter-book
+````
+
+see all options in <https://mystmd.org/guide/exercises>
+
+in theory we should be able to use this
+
+```{exercise} the header
+:label: exo-bidule
+
+the question
+```
+
+`````{admonition} the code
+:class: dropdown
+````{code-block} myst
+```{exercise} the header
+:label: exo-bidule
+   
+the question
+```
+````
+`````
+
++++
+
+### native MyST solution
+
+you'd write a solution like this
+
+````{warning}
+it's unclear to me how the linked example works with respect to linking the solution and the exercise
+````
+
+````{solution} the solution
+:label: sol-bidule
+
+the solution
+```{code-block} python
+# one can use ```{code-block} to insert code
+def fact(n):
+    pass
+```
+````
+
+``````{admonition} the code
+:class: dropdown
+
+`````{code-block} myst
+````{solution} the solution
+:label: sol-bidule
+    
+the solution
+```{code-block} python
+one can use ```{code-block} to insert code
+def fact(n):
+    pass
+```
+````
+`````
+``````
+
++++
+
+### without this feature
+
+currently we use an admonition with a `seealso` class
+
+```{admonition} exercise: the topic
+:class: seealso
+
+the question blabla  
+note that the whole business might come with a `:class: dropdown` thingy
+```
+
+I don't have a very stable way to present solutions, here's one suboptimal way to do it with a 
+`:class: dropdown warning` directive
+
+```{admonition} solution
+:class: dropdown warning
+
+the solution
+````
