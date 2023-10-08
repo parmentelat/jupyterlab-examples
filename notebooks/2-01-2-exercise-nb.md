@@ -43,14 +43,14 @@ this requires to have
 
 +++
 
-## native MyST exercise
-
-+++
-
 see all options in <https://mystmd.org/guide/exercises>  
 as well as <https://ebp-sphinx-exercise.readthedocs.io/en/latest/syntax.html>
 
 in particular there is a `hidden` attribute that may come in handy but I have not explored in depth yet
+
++++
+
+## native MyST exercise
 
 +++
 
