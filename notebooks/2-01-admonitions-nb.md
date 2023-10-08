@@ -218,23 +218,38 @@ however **do not use this** as apparently this requires extra configuration...
 
 +++
 
+````{warning}
+this requires to have
+* ```bash
+  pip install sphinx-exercise
+  ```
+* **and** `sphinx_exercise` in `_config.yml` like so
+  ```yaml
+  sphinx:
+    extra_extensions"
+      sphinx_exercise
+  ```
+````
+
++++
+
 ### native MyST exercise
 
 +++
 
-````{warning}
-as of 2023 oct, this does not render properly under jupyter-book
-````
-
 see all options in <https://mystmd.org/guide/exercises>
 
-in theory we should be able to use this
++++
+
+here's a sample
 
 ```{exercise} the header
 :label: exo-bidule
 
 the question
 ```
+
++++
 
 `````{admonition} the code
 :class: dropdown
@@ -268,6 +283,8 @@ def fact(n):
 ```
 ````
 
++++
+
 ``````{admonition} the code
 :class: dropdown
 
@@ -289,7 +306,7 @@ def fact(n):
 
 ### without this feature
 
-currently we use an admonition with a `seealso` class
+before that we have used an admonition with a `seealso` class
 
 ```{admonition} exercise: the topic
 :class: seealso

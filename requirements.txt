@@ -15,5 +15,7 @@ jupytext
 jupyterlab-myst
 jupyterlab-courselevels
 jupyterlab-tpt
+#
 jupyter-book
 sphinxcontrib-mermaid
+sphinx-exercise
