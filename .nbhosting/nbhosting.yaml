@@ -22,4 +22,4 @@ builds:
     script: |
       pip install jupyter-book
       jupyter-book build .
-    readthedocs_url: jupyterlab-examples.readthedocs.io
+    external_url: jupyterlab-examples.external.io
