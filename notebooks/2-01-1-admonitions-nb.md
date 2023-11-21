@@ -35,6 +35,11 @@ here's how we use MyST **admonitions**; there are other ways, but these are stab
 
 just be wary to **not insert a (sub)title** inside an admonition, as it would not make it to the table of contents !
 
+```{admonition} see also the sphinx-book-theme doc
+
+<https://sphinx-book-theme.readthedocs.io/en/stable/reference/kitchen-sink/admonitions.html>
+```
+
 +++
 
 ## no title and no class
