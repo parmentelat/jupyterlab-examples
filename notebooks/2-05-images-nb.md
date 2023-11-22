@@ -81,3 +81,18 @@ same within dropdown admonitions
 ```{image} media/board-8x8-small.png
 ```
 ````
+
++++
+
+## bug reproduction
+
+mostly the same as previous example, but **specifying a width** breaks it:  
+when toggled off, a large portion of wasted vertical space is used
+
+````{admonition} with dropdown, MyST syntax and width
+:class: dropdown seealso
+
+```{image} media/board-8x8-small.png
+:width: 500px
+```
+````
