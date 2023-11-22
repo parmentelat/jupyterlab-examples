@@ -31,6 +31,8 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
+several variations on inserting an image
+
 +++ {"tags": []}
 
 ## regular markdown
@@ -39,7 +41,7 @@ HTML(filename="_static/style.html")
 
 +++
 
-## myst
+## MyST Syntax
 
 we can set more layout parameters here
 
@@ -47,3 +49,35 @@ we can set more layout parameters here
 :width: 100px
 :align: center
 ```
+
++++
+
+## inside admonitions (no dropdown)
+
+testing within plainly visible admonitions - not messing with the size this time
+
+```{admonition} no dropdown and regular markdown
+![](media/board-8x8-small.png)
+```
+
+````{admonition} no dropdown and with MyST syntax
+```{image} media/board-8x8-small.png
+```
+````
+
++++
+
+## inside dropdown admonitions
+
+same within dropdown admonitions
+
+```{admonition} with dropdown and regular markdown
+:class: dropdown
+![](media/board-8x8-small.png)
+```
+
+````{admonition} with dropdown and with MyST syntax
+:class: dropdown
+```{image} media/board-8x8-small.png
+```
+````
