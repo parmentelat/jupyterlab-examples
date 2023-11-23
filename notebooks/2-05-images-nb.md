@@ -96,3 +96,25 @@ when toggled off, a large portion of wasted vertical space is used
 :width: 500px
 ```
 ````
+
++++
+
+## with workaround
+
+issue already reported in <https://github.com/executablebooks/jupyter-book/issues/1928> 
+and specifically a workaround is proposed in <https://github.com/executablebooks/jupyter-book/issues/1928#issuecomment-1552719064>
+
+so, same as before, but wrapped inside a `{div}` wrapper; this
+
+* works fine in the html output
+* but breaks in jupyter with a `div - Unknown Directive` message
+* follow-up here https://github.com/executablebooks/jupyter-book/issues/1928
+
+`````{admonition} with dropdown, MyST syntax and width
+:class: dropdown seealso
+````{div}
+```{image} media/board-8x8-small.png
+:width: 500px
+```
+````
+`````
