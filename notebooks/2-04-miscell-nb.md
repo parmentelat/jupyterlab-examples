@@ -10,6 +10,10 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
@@ -20,12 +24,34 @@ Licence CC BY-NC-ND, Thierry Parmentelat
 
 +++ {"tags": []}
 
-# miscell
+# miscellaneous
 
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
+## equations and dollarmath
+
+this requires extra config, search for `dollarmath`
+
+same for latex-math inline $\forall x\in \mathbb{C}$ like this, or double-dollars like that
+
+$$
+\forall x\in \mathbb{C}
+$$
+
++++
+
+## strikethrough
+
+mostly not yet available
+
+this requires an extra config step ~~so that one can see text in strikethrough mode~~
+
+not yet working with jupyterlab(-myst)
+
++++
 
 ## the MyST download role
 
@@ -38,7 +64,11 @@ heavily used in `flotpython-exos`
 
 +++
 
-## youtube video & iframe
+## iframes
+
++++
+
+### raw htaml iframe: NO !
 
 +++
 
@@ -47,39 +77,20 @@ heavily used in `flotpython-exos`
 
 not working in jlab, and works in jupyter book only if the target is in `_static`
 
+```html
+<!-- DO NOT USE THIS -->
 <iframe src="_static/addresses-final.html" width="100%" height="600px">
 </iframe>
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
-tags: []
----
-# optionally set hide-input on this cell
-
-from IPython.display import IFrame
-
-# Youtube
-IFrame(
-    "https://www.youtube.com/embed/i_ZcP7iNw-U?rel=0&amp;controls=0&amp;showinfo=0",
-    width="600",
-    height="400",
-    # extras='frameborder="0" allowfullscreen',
-)
 ```
+````
 
-## local video & ipywidgets
++++
 
-for a local video:
+### use IPython's IFrame instead
 
-```{code-cell} ipython3
-# optionally set hide-input on this cell
+see notebook on videos about an example; works for any other iframe usage of course
 
-from ipywidgets import Video
-Video.from_file("_static/Push.mp4", autoplay=False)
-```
++++
 
 ## ipythontutor
 
@@ -110,23 +121,3 @@ def pgcd(a, b):
 ```{code-cell} ipython3
 exo_pgcd.correction(pgcd)
 ```
-
-## equations and dollarmath
-
-this requires extra config, search for `dollarmath`
-
-same for latex-math inline $\forall x\in \mathbb{C}$ like this, or double-dollars like that
-
-$$
-\forall x\in \mathbb{C}
-$$
-
-+++
-
-## strikethrough
-
-mostly not yet available
-
-this requires an extra config step ~~so that one can see text in strikethrough mode~~
-
-not yet working with jupyterlab(-myst)
