@@ -93,11 +93,27 @@ Video.from_file("_static/under-static.mp4", autoplay=False)
 
 trying to understand what @chirsjewell was meaning in 
 <https://github.com/executablebooks/MyST-Parser/issues/651>
-
 which would maybe allow to refer to videos not necessarily stored under `_static`, 
 but to no avail so far
 
-+++ {"tags": []}
+as of 2023 dec, this works only
+
+| env | vid. location | works ? | symptom/comment |
+|-----|---------------|---------|-----------------|
+| jlab | under `_static` | KO |  (video: unknown directive)
+| jlab | outside of `_static` | KO | (likewise)
+| jupyter book | under `_static` | OK | cannot be resized though
+| jupyter book | outside of `_static` | KO | a video widget appears but the target file is not there
+
+---
+
+this one is under `_static/`
+
+```{video} _static/under-static.mp4
+:width: 300px
+```
+
+this one is under `media/`
 
 ```{video} media/under-media.mp4
 ```
