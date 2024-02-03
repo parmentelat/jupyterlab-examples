@@ -32,3 +32,11 @@ div.cell div.cell_output .output pre {
 .myst table tbody tr:nth-child(odd) {
     background-color: #f8f8f8;
 }
+
+/*
+ * play with custom styles in admonitions
+ */
+ .custom {
+    background-color: rgb(251, 231, 234) !important;
+    font-size: x-small;
+ }

@@ -10,6 +10,10 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
@@ -212,3 +216,60 @@ and the rest of the message is just mentioned directly in the &lt;details&gt; ta
 </details>
 
 however **do not use this** as apparently this requires extra configuration...
+
++++
+
+## custom style
+
++++
+
+### right in admonition
+
+we have defined a CSS class `custom` in `_static/style.css` and let's try to use it
+
+but nope...
+
+**NOTE** in `flotpython-slides` we historically had a `note` class defined in `style.css` and in that case it did affect the output of the `note` admonitions, so we had to rename that class into something else; sigh..
+
+````{admonition} right in admonition
+:class: seealso custom
+
+here we use an admonition with class `custom`:
+- in jlab that goes unaffected, even when we evaluate the cell that loads `style.html`
+- but in jbook output, the `font-size` property at least gets applied !
+````
+
++++
+
+````{admonition} regular fit
+:class: seealso
+
+the regular size and style
+````
+
+````{admonition} using the custom class
+:class: seealso custom
+
+some minor comment that should show up with a smaller font
+````
+
++++
+
+### in a div inside admonition
+
+same but now we wrap the admo content within a *div* MyST tag
+
+`````{admonition} in a div inside admonition
+:class: seealso
+
+````{div}
+:class: custom
+
+here we have an `admonition` with a `div` embedded, trying to add `custom` to the `div`'s `class` attributes
+
+it does not seem to work either
+
+- in jlab we get the infamous *Unknown directive* message
+- in jbook the rendering is unaffected
+````
+`````

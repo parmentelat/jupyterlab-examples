@@ -87,7 +87,9 @@ same within dropdown admonitions
 ## bug reproduction
 
 mostly the same as previous example, but **specifying a width** breaks it:  
-when toggled off, a large portion of wasted vertical space is used
+
+* the jupyter output is fine
+* but in the html output, when toggled off, the vertical space is wasted (white)
 
 ````{admonition} with dropdown, MyST syntax and width
 :class: dropdown seealso
@@ -101,8 +103,9 @@ when toggled off, a large portion of wasted vertical space is used
 
 ## with workaround
 
-issue already reported in <https://github.com/executablebooks/jupyter-book/issues/1928> 
-and specifically a workaround is proposed in <https://github.com/executablebooks/jupyter-book/issues/1928#issuecomment-1552719064>
+issue already reported in <https://github.com/executablebooks/jupyter-book/issues/1928>  
+and specifically a workaround is proposed in  
+<https://github.com/executablebooks/jupyter-book/issues/1928#issuecomment-1552719064>
 
 so, same as before, but wrapped inside a `{div}` wrapper; this
 
@@ -118,3 +121,13 @@ so, same as before, but wrapped inside a `{div}` wrapper; this
 ```
 ````
 `````
+
++++
+
+```{div}
+some code
+```
+
+```{code-cell} ipython3
+
+```
