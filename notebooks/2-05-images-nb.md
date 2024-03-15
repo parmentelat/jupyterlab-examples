@@ -110,7 +110,7 @@ and specifically a workaround is proposed in
 so, same as before, but wrapped inside a `{div}` wrapper; this
 
 * works fine in the html output
-* but breaks in jupyter with a `div - Unknown Directive` message
+* but breaks in jupyter lab with a `div - Unknown Directive` message
 * follow-up here https://github.com/executablebooks/jupyter-book/issues/1928
 
 `````{admonition} with dropdown, MyST syntax and width
@@ -124,10 +124,17 @@ so, same as before, but wrapped inside a `{div}` wrapper; this
 
 +++
 
-```{div}
-some code
+the issue also suggests of problems occurring if the image comes with additional contents like text, let us try this one
+
+`````{admonition} same, but adding text around the image
+:class: dropdown seealso
+````{div}
+some text before
+
+```{image} media/board-8x8-small.png
+:width: 500px
 ```
 
-```{code-cell} ipython3
-
-```
+some text after
+````
+`````
