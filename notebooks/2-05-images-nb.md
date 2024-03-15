@@ -139,3 +139,26 @@ some text before
 some text after
 ````
 `````
+
++++
+
+the issue also suggests of problems occurring if the image comes with additional contents like text, let us try this one
+
+`````{admonition} same, with multiple images
+:class: dropdown seealso
+````{div}
+some text before
+
+```{image} media/board-8x8-small.png
+:width: 500px
+```
+
+some text in the middle, another image (even if it looks the same)
+
+```{image} media/board-8x8.png
+:width: 200px
+```
+
+some text after
+````
+`````
