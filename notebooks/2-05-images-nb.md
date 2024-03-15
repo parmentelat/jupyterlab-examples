@@ -84,6 +84,7 @@ same within dropdown admonitions
 
 +++
 
+(label-dropdown-div)=
 ## bug reproduction
 
 mostly the same as previous example, but **specifying a width** breaks it:  

@@ -227,14 +227,11 @@ however **do not use this** as apparently this requires extra configuration...
 
 we have defined a CSS class `custom` in `_static/style.css` and let's try to use it
 
-but nope...
+````{admonition} status
+:class: warning
 
-**NOTE** in `flotpython-slides` we historically had a `note` class defined in `style.css` and in that case it did affect the output of the `note` admonitions, so we had to rename that class into something else; sigh..
+as of 2024 march, this kind of works in the sense that
 
-````{admonition} right in admonition
-:class: seealso custom
-
-here we use an admonition with class `custom`:
 - in jlab that goes unaffected, even when we evaluate the cell that loads `style.html`
 - but in jbook output, the `font-size` property at least gets applied !
 ````
@@ -257,7 +254,7 @@ some minor comment that should show up with a smaller font
 
 ### in a div inside admonition
 
-same but now we wrap the admo content within a *div* MyST tag
+same but now we wrap the admo content within a *div* MyST tag - see also [here in the notebook on images](label-dropdown-div)
 
 `````{admonition} in a div inside admonition
 :class: seealso
