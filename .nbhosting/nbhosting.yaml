@@ -4,7 +4,7 @@ tracks:
   id: jlab4-nb7
   name: Jlab4 examples
   sections:
-  - name: real stuff
+  - name: setup note
     # one note on using rtd, plus
     # randomly take one .py and one .md
     # from the actual courses

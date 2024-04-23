@@ -1,6 +1,6 @@
 format: jb-book
 parts:
-- caption: real stuff
+- caption: setup note
   chapters:
   - glob: 1-[0-9]*
 - caption: recipes
