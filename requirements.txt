@@ -15,7 +15,8 @@ jupytext
 jupyterlab-myst
 jupyterlab-courselevels
 jupyterlab-tpt
+# see also notebooks/requirements-rtd.txt
 #
-jupyter-book
-sphinxcontrib-mermaid
-sphinx-exercise
+# required by commons.py
+colorama
+click
