@@ -2,7 +2,7 @@
 toc: _toc.yml
 
 ifeq ($(TOCDIR),)
-TOCDIR = examples
+TOCDIR = notebooks
 endif
 
 # update jupyter book toc from the nbhosting one
