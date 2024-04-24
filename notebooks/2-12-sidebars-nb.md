@@ -4,15 +4,17 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
-language_info:
-  name: python
-  nbconvert_exporter: python
-  pygments_lexer: ipython3
 ---
+
+Licence CC BY-NC-ND, Thierry Parmentelat
+
++++
 
 # sidebars and similar
 
@@ -101,7 +103,7 @@ and some body within a simple margin
 
 and below so we see how it goes
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++ {"slideshow": {"slide_type": ""}}
 
 ## full-width
 
@@ -109,7 +111,7 @@ a feature to take advantage of residual space on the right hand side
 
 of course this is targetting the jbook output
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++ {"slideshow": {"slide_type": ""}}
 
 ### full-width code
 

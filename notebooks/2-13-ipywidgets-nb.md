@@ -4,17 +4,17 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
-language_info:
-  name: python
-  nbconvert_exporter: python
-  pygments_lexer: ipython3
 ---
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
+Licence CC BY-NC-ND, Thierry Parmentelat
+
++++ {"slideshow": {"slide_type": ""}}
 
 # ipywidgets
 
@@ -93,8 +93,4 @@ def frequency(f):
 plt.figure()
 
 interact(frequency, f=widgets.FloatSlider(min=1, max=10, value=2));
-```
-
-```{code-cell} ipython3
-
 ```

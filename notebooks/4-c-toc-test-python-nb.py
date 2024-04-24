@@ -20,7 +20,14 @@
 # ---
 
 # %% [markdown]
+# Licence CC BY-NC-ND, Thierry Parmentelat
+
+# %% [markdown]
 # # regular notebook (not myst)
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown]
 # ## a subtitle

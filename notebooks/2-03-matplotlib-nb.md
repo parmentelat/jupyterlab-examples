@@ -3,15 +3,17 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
-language_info:
-  name: python
-  nbconvert_exporter: python
-  pygments_lexer: ipython3
 ---
+
+Licence CC BY-NC-ND, Thierry Parmentelat
+
++++
 
 # matplotlib rendering
 
@@ -34,8 +36,10 @@ Y = np.sin(X)
 
 * `%matplotlib notebook` is advertised as no longer working
   and indeed one gets `Javascript Error: IPython is not defined`
+
 * `%matplotlib widget` has been mentioned sometimes;
   it seems to work but it won't render properly in the jupyter book (or was it in vs-code ?)
+
 * so I will settle on using `%matplotlib ipympl`
 
 either `notebook` or `ipympl` requires `pip install ipympl`  

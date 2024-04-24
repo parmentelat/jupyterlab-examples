@@ -10,10 +10,6 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
-language_info:
-  name: python
-  nbconvert_exporter: python
-  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
@@ -52,6 +48,7 @@ the next code cells are marked as
 +++ {"slideshow": {"slide_type": ""}, "tags": []}
 
 ````{note}
+
 * thanks to (1) the jb HTML output will come as a collapsible
 * thanks to the `jupyterlab-courselevels` extension, with (1) the code cell input should be hidden in jupyterlab (and hopefully nb7 as well)
 * because of (2) the cell input will not show under nbclassic  

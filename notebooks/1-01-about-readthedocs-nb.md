@@ -52,6 +52,7 @@ setting up the webhook in github that allows rtd to be notified of pushes
 
 * this had been failing me for a long time, and in that case builds wouldn't
   trigger automatically on a push
+
 * note that until this works smoothly, it's always possible to trigger builds
   manually
 
@@ -61,12 +62,15 @@ setting up the webhook in github that allows rtd to be notified of pushes
 
 * noticed that <https://github.com/settings/applications> had no entry for
   readthedocs
+
 * went to <https://readthedocs.org/accounts/social/connections/> and from there
   (or *username* -> *Settings* -> *Connected Services*) and
   + disconnected github
   + reconnected github
+
 * this gave me a chance to **add access to organizations** - in particular I added
   the `ue12-p23` orga that is current at this stage
+
 * might need to **redo this over time ?**, as the orga changes
 
 +++

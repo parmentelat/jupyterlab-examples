@@ -21,9 +21,16 @@
 # ---
 
 # %% [markdown]
+# Licence CC BY-NC-ND, Thierry Parmentelat
+
+# %% [markdown]
 # # toplevel title A
 #
 # it seems like notebook classic, with the toc extension enabled, would automatically add numbering to titles
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown]
 # ## subtitle A

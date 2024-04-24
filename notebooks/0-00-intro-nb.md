@@ -21,7 +21,10 @@ nbhosting:
 
 Licence CC BY-NC-ND, Thierry Parmentelat
 
-+++
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 # introduction
 
@@ -41,6 +44,7 @@ summarize most of our notebook recipes, regarding among others
 
 * regular admonitions, including collapsible (texts where some part is toggable with a right or down arrow)
   note that collapsible also applies to admonitions
+
 * exercises
 * hide-input artefact (a code cell whose input code is hidden)
 * miscell usual tricks (link to a downloadable file, iframe with some static html, ...)

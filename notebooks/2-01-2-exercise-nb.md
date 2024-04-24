@@ -10,10 +10,6 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
-language_info:
-  name: python
-  nbconvert_exporter: python
-  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
@@ -33,9 +29,11 @@ HTML(filename="_static/style.html")
 
 ````{warning}
 this requires to have
+
 * ```bash
   pip install sphinx-exercise
   ```
+
 * **and** `sphinx_exercise` in `_config.yml` like so
   ```yaml
   sphinx:
