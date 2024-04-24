@@ -25,7 +25,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat
 ```{code-cell} ipython3
 :tags: [raises-exception]
 
-%%python
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```

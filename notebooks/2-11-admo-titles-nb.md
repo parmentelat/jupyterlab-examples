@@ -20,7 +20,10 @@ it seems that not all markdown construction play well when put in an admonition 
 
 each time we try the same admonition with backticks, and then with colons
 
-+++
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ## code in the title
 

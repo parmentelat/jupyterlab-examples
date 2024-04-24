@@ -18,7 +18,10 @@ language_info:
 
 as per <https://jupyterbook.org/en/stable/content/layout.html>
 
-+++
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ## sidebar
 

@@ -10,6 +10,10 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
@@ -22,7 +26,10 @@ Licence CC BY-NC-ND, Thierry Parmentelat
 
 # exercises
 
-+++
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ````{warning}
 this requires to have

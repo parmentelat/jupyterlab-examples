@@ -29,7 +29,9 @@ COMMONS = [
     'notebooks/Makefile.norm',
     'Makefile.pypi',
     'notebooks/_static/style.css',
+    'notebooks/_static/style_common.css',
     'jupytext.toml',
+    '.readthedocs.yaml',
 ]
 
 COMMON_ROOT = Path.home() / 'git/'
@@ -110,6 +112,15 @@ class Common:
     def nb_files(self):
         return sum(len(files) for files in self.groups.values())
 
+    def files(self, relative):
+        """
+        prints on stdout all the filename for one sample of each group
+        if relative is True, the filename is relative to COMMON_ROOT
+        """
+        for group, files in self.groups.items():
+            file = files[0]
+            print(file.path.relative_to(COMMON_ROOT) if relative else file.path)
+
     def summary(self):
         """
         displays current status for a common file:
@@ -179,6 +190,17 @@ def list_projects(common=None):
             projects.add(path.relative_to(COMMON_ROOT).parts[0])
     return projects
 
+
+@cli.command()  # @cli, not @click!
+@click.option('-c', '--common', envvar="COMMON",
+    default=None, help='list filenames, one per group')
+@click.option('-r', '--relative', is_flag=True, help='Display relative paths only')
+def files(common, relative):
+    if common is None:
+        for common in COMMONS:
+            print(f"{4*'-'} {common}")
+            Common(common).files(relative=relative)
+    Common(common).files(relative=relative)
 
 @cli.command()  # @cli, not @click!
 @click.option('-c', '--common', envvar="COMMON",

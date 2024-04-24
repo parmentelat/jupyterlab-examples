@@ -1,7 +1,7 @@
 # ---
 # jupyter:
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
 #     formats: py:percent
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
 #       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
@@ -25,6 +25,10 @@
 #
 # it seems like notebook classic, with the toc extension enabled, would automatically add numbering to titles
 
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+
 # %% [markdown]
 # ## subtitle A
 
@@ -36,5 +40,3 @@
 
 # %% [markdown]
 # another paragraph
-
-# %%

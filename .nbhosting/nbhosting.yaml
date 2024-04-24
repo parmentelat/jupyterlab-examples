@@ -13,6 +13,9 @@ tracks:
   - name: recipes
     notebooks:
     - 2-[0-9]*.md
+  - name: styles & spaces
+    notebooks:
+    - 3-[0-9]*.md
 
 builds:
   - id: nb7

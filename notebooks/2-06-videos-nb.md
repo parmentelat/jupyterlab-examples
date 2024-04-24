@@ -18,7 +18,7 @@ nbhosting:
   title: React apps basics
 ---
 
-+++ {"slideshow": {"slide_type": "-"}, "tags": [], "editable": true}
++++ {"slideshow": {"slide_type": "-"}, "tags": []}
 
 Licence CC BY-NC-ND, Thierry Parmentelat
 

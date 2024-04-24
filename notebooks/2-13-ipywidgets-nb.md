@@ -24,6 +24,11 @@ curious to see how it goes; in a nushell:
 - html output has the widgets,  but they don't interact (frozen output)
 
 ```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
+
+```{code-cell} ipython3
 from ipywidgets import interact, interactive, fixed, interact_manual
 import ipywidgets as widgets
 ```

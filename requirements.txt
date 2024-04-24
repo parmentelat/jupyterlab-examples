@@ -20,3 +20,4 @@ jupyterlab-tpt
 # required by commons.py
 colorama
 click
+sphinx-exercise

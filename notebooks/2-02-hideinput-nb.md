@@ -10,12 +10,15 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
 
 +++ {"slideshow": {"slide_type": "-"}}
-
 
 Licence CC BY-NC-ND, Thierry Parmentelat
 
@@ -93,7 +96,6 @@ with one markdown cell (this very one) and one code cell
 
 ```{code-cell} ipython3
 ---
-editable: true
 scrolled: true
 slideshow:
   slide_type: ''
@@ -107,13 +109,12 @@ print("hello")
 
 below we repeat these 2 cells, with hide-input set
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}, "tags": ["hide-input"], "hide_input": true}
++++ {"slideshow": {"slide_type": ""}, "tags": ["hide-input"], "hide_input": true}
 
 a (hidden-input) markdown cell wont show up at all
 
 ```{code-cell} ipython3
 ---
-editable: true
 hide_input: true
 scrolled: true
 slideshow:
