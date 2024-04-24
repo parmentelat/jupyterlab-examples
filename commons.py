@@ -142,7 +142,7 @@ class Common:
                 if file.rank == 0:
                     print(Style.RESET_ALL, end="")
 
-    def diff(self, rank=1):
+    def diff(self, rank):
         """
         runs diffs between most recent and previous versions of a common file
         """
@@ -154,6 +154,19 @@ class Common:
         file1 = self.groups[keys[rank]][0]
         print(f"diff {file0.short()} {file1.short()}")
         os.system(f"diff {file0.path} {file1.path}")
+
+    @staticmethod
+    def run_commands(commands, dry_run, interactive):
+        for command in commands:
+                if dry_run:
+                    print(f"DRY RUN: {command}")
+                    continue
+                if interactive:
+                    answer = input(f"{command} - OK [y/N] ? ")
+                    if answer.lower() not in ['y', 'yes']:
+                        print("skipping")
+                        continue
+                os.system(command)
 
     def adopt(self, rank, dry_run, interactive):
         """
@@ -168,15 +181,31 @@ class Common:
             # copy the reference file to all the files in the group
             for file in files:
                 command = f"rsync -a {reference.path} {file.path}"
-                if dry_run:
-                    print(f"DRY RUN: {command}")
-                    continue
-                if interactive:
-                    answer = input(f"{command} - OK ? ")
-                    if answer.lower() not in ['y', 'yes']:
-                        print("skipping")
-                        continue
-                os.system(command)
+                self.run_commands([command], dry_run, interactive)
+
+    def commit(self, dry_run, interactive):
+        """
+        same logic as adopt, but would do git add / git commit
+
+        the implementation is different though, because at that point
+        we have done 'adopt', so now all the files are in the same group...
+        """
+        print("WARNING: make sure the projects have no pending changes"
+              " in their index before running this command")
+        for group, files in self.groups.items():
+            for file in files:
+                dir = file.path.parents[0]
+                name = file.path.name
+                command = f"git -C {dir} diff-index HEAD {name} | grep -q ."
+                # print(command)
+                needs_commit = os.system(command) == 0
+                # print(f"{file.short()} needs commit: {needs_commit}")
+                if needs_commit:
+                    commands = [
+                        f"git -C {dir} add {name}",
+                        f"git -C {dir} commit -m 'adopt {name} with {__file__}'",
+                    ]
+                    self.run_commands(commands, dry_run, interactive)
 
 
 def list_projects(common=None):
@@ -194,64 +223,96 @@ def list_projects(common=None):
 
 
 @cli.command()  # @cli, not @click!
-@click.option('-c', '--common', envvar="COMMON",
-    default=None, help='list filenames, one per group')
 @click.option('-r', '--relative', is_flag=True, help='Display relative paths only')
-def files(common, relative):
-    if common is None:
-        for common in COMMONS:
-            print(f"{4*'-'} {common}")
-            Common(common).files(relative=relative)
-    Common(common).files(relative=relative)
+@click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
+def files(commons, relative):
+    """
+    for each mentioned common file, lists one file per group
+    with --relative, the filename is relative to COMMON_ROOT
+
+    if no common file is mentioned, all known common files are processed
+    """
+    commons = commons or COMMONS
+    for common in commons:
+        common_obj = Common(common)
+        print(f"{4*'-'} {common_obj.common}")
+        common_obj.files(relative=relative)
+
 
 @cli.command()  # @cli, not @click!
-@click.option('-c', '--common', envvar="COMMON",
-    default=None, help='Focus on one specific common file')
 @click.option('-v', '--verbose', is_flag=True, help='Display details')
-def summary(common, verbose):
-    if common is None:
-        for common in COMMONS:
-            common_obj = Common(common)
-            if verbose or not common_obj.is_ok():
-                print(f"{4*'-'} {common}")
-                common_obj.summary()
-    else:
-        Common(common).summary()
+@click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
+def summary(commons, verbose):
+    """
+    for each mentioned common file, shows how many # versions (groups) are found
+    if no common file is mentioned, all known common files are processed
+    """
+    commons = commons or COMMONS
+    for common in commons:
+        common_obj = Common(common)
+        if verbose or not common_obj.is_ok():
+            print(f"{4*'-'} {common_obj.common}")
+            common_obj.summary()
 
 
 @cli.command()  # @cli, not @click!
-@click.option('-c', '--common', envvar="COMMON",
-    default=None, help='Focus on one specific common file')
-def diff(common):
-    if common is None:
-        for common in COMMONS:
-            common_obj = Common(common)
-            common_obj.diff()
-    else:
-        Common(common).diff()
+@click.option('-r', '--rank', default=1, help='Rank of the group to compare with')
+@click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
+def diff(commons, rank):
+    """
+    for each mentioned common file, shows the diff between the most recent group
+    and the previous version (or use -r to spot another group)
+    """
+    commons = commons or COMMONS
+    for common in commons:
+        common_obj = Common(common)
+        print(f"{4*'-'} {common_obj.common}")
+        common_obj.diff(rank)
 
 
 @cli.command()  # @cli, not @click!
-@click.option('-c', '--common', envvar="COMMON",
-    default=None, help='Focus on one specific common file')
 @click.option('-r', '--rank', default=0, help='Rank of the source file')
-@click.option('-d', '--dry-run/--no-dry-run', is_flag=True, default=True, help='Dry run')
+@click.option('-d', '--dry-run/--no-dry-run', is_flag=True, default=False, help='Dry run')
 @click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
               help='prompts before copying into each project')
-def adopt(common, rank, dry_run, interactive):
-    if common is None:
-        for common in COMMONS:
-            common_obj = Common(common)
-            common_obj.adopt(rank, dry_run, interactive)
-    else:
-        Common(common).adopt(rank, dry_run, interactive)
+@click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
+def adopt(commons, rank, dry_run, interactive):
+    commons = commons or COMMONS
+    for common in commons:
+        common_obj = Common(common)
+        print(f"{4*'-'} {common_obj.common}")
+        common_obj.adopt(rank, dry_run, interactive)
 
 
 @cli.command()  # @cli, not @click!
-@click.option('-c', '--common', envvar="COMMON",
-    default=None, help='Focus on one specific common file')
-def git_status(common):
-    projects = sorted(list_projects(common))
+@click.option('-d', '--dry-run/--no-dry-run', is_flag=True, default=False, help='Dry run')
+@click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
+              help='prompts before copying into each project')
+@click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
+def commit(commons, dry_run, interactive):
+    commons = commons or COMMONS
+    for common in commons:
+        common_obj = Common(common)
+        print(f"{4*'-'} {common_obj.common}")
+        common_obj.commit(dry_run, interactive)
+
+
+@cli.command()  # @cli, not @click!
+@click.option('-v', '--verbose', is_flag=True, help='Display details')
+@click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
+def git_status(commons, verbose):
+    """
+    run git status in all projects that have that common file
+    """
+    commons = commons or COMMONS
+    projects = set()
+    for common in commons:
+        common = spot_common(common)
+        more = list_projects(common)
+        if verbose:
+            print(f"{common=}: in projects {sorted(more)}")
+        projects.update(more)
+    projects = sorted(projects)
     for project in projects:
         print(f"{4*'-'} {project}")
         os.system(f"git -C {COMMON_ROOT / project} status --short --untracked-files=no")
