@@ -168,14 +168,16 @@ class Common:
             # copy the reference file to all the files in the group
             for file in files:
                 command = f"rsync -a {reference.path} {file.path}"
-                print(command)
-                if not dry_run:
-                    if interactive:
-                        answer = input("OK ? ")
-                        if answer.lower() in ['y', 'yes']:
-                            os.system(command)
-                    else:
-                        os.system(command)
+                if dry_run:
+                    print(f"DRY RUN: {command}")
+                    continue
+                if interactive:
+                    answer = input(f"{command} - OK ? ")
+                    if answer.lower() not in ['y', 'yes']:
+                        print("skipping")
+                        continue
+                os.system(command)
+
 
 def list_projects(common=None):
     """
