@@ -6,3 +6,6 @@ jupyter-book
 # local dep
 sphinxcontrib_mermaid
 sphinxcontrib_video
+#
+jupyterlite-pyodide-kernel
+jupyterlite-sphinx

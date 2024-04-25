@@ -16,6 +16,9 @@ tracks:
   - name: styles & spaces
     notebooks:
     - 3-[0-9]*.md
+  - name: jupyter lite
+    notebooks:
+    - 4-[0-9]*.md
 
 builds:
   - id: nb7

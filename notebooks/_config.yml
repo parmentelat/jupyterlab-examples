@@ -40,15 +40,20 @@ sphinx:
         - fmt: py:percent
     html_show_copyright: false
     # not quite convincing but...
-    html_extra_path: ['media']
+    html_extra_path: 
+      - 'media'
+      - 'lite'
+    jupyterlite_dir: .
   extra_extensions:
+    - sphinxcontrib.video
+    - jupyterlite_sphinx
+    - sphinx_exercise
     # for mermaid diagrams, see also
     # https://opencomputinglab.github.io/SubjectMatterNotebooks/diagram/sphinx-diagrammers.html
     # https://blog.ouseful.info/2021/11/02/previewing-sphinx-and-jupyter-book-rendered-mermaid-and-wavedrom-diagrams-in-vs-code/
     # - myst_parser
     - sphinxcontrib.mermaid
-    - sphinxcontrib.video
-    - sphinx_exercise
+
     # looks like we're going to need this if/when it gets released
     # https://github.com/mgaitan/sphinxcontrib-mermaid/pull/76
     # - sphinxcontrib.mermaid_inheritance

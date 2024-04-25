@@ -9,4 +9,7 @@ parts:
 - caption: styles & spaces
   chapters:
   - glob: 3-[0-9]*
+- caption: jupyter lite
+  chapters:
+  - glob: 4-[0-9]*
 root: 0-00-intro-nb
