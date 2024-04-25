@@ -47,7 +47,15 @@ jtpio's recipes are for pure ReST and .ipynb notebooks, so using MyST for both n
 
 ## prerequisites
 
-... list to be consolidated if/once we're there 
+at this point, here's the changes made to enable jupyter-lite in the jupyter-book output
+
+- in `notebooks/requirements-rtd.yml`
+  - add `jupyterlite-pyodide-kernel`
+  - and `jupyterlite-sphinx`
+- in `_config.yml`:
+  - `sphinx.config.html_extra_path`: append `lite`
+  - `sphinx.config.jupyterlite_dir`: set to `.`
+  - `sphinx.extra_extensions`: append `jupyterlite_sphinx`
 
 +++
 
