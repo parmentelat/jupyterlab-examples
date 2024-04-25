@@ -13,12 +13,15 @@ tracks:
   - name: recipes
     notebooks:
     - 2-[0-9]*.md
-  - name: styles & spaces
+  - name: graphics & widgets
     notebooks:
     - 3-[0-9]*.md
-  - name: jupyter lite
+  - name: styles & spaces
     notebooks:
     - 4-[0-9]*.md
+  - name: jupyter lite
+    notebooks:
+    - 5-[0-9]*.md
 
 builds:
   - id: nb7

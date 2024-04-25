@@ -6,10 +6,13 @@ parts:
 - caption: recipes
   chapters:
   - glob: 2-[0-9]*
-- caption: styles & spaces
+- caption: graphics & widgets
   chapters:
   - glob: 3-[0-9]*
-- caption: jupyter lite
+- caption: styles & spaces
   chapters:
   - glob: 4-[0-9]*
+- caption: jupyter lite
+  chapters:
+  - glob: 5-[0-9]*
 root: 0-00-intro-nb

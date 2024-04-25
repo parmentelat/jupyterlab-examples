@@ -4,12 +4,14 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.16.0
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 ---
 
 Licence CC BY-NC-ND, Thierry Parmentelat
@@ -132,9 +134,7 @@ data = """
 
 ### full-width text
 
-this is more convoluted, there is a need to use a `{div}` thing which is not supported in jlab
-
-regardless, here's the output
+there is a need to use a `{div}` thing; regardless, here's one example
 
 +++
 
