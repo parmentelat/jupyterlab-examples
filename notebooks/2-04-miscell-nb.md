@@ -10,6 +10,10 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
@@ -102,6 +106,8 @@ L1[1:2] = [100, 200, 300]
 ```
 
 ## nbautoeval
+
+here is a first, static, test; there is another way to do this in the jlite section
 
 ```{code-cell} ipython3
 from exo_pgcd import exo_pgcd

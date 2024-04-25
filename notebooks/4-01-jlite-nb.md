@@ -163,7 +163,7 @@ like for images this needs to go inside a `{div}` thingy
 :width: 100%
 :height: 300px
 :prompt: replite
-:prompt_color: gray
+:prompt_color: pink
 
 print('Hello from a JupyterLite console!')
 ```
@@ -180,7 +180,7 @@ on one specific notebook that is jupytext-encoded in Python
 :width: 100%
 :height: 300px
 :prompt: notebooklite on one notebook
-:prompt_color: orange
+:prompt_color: aquamarine
 ```
 
 +++
@@ -199,7 +199,7 @@ on one specific notebook that is jupytext-encoded
 :width: 100%
 :height: 300px
 :prompt: notebooklite on one notebook
-:prompt_color: orange
+:prompt_color: yellow
 ```
 ````
 `````
