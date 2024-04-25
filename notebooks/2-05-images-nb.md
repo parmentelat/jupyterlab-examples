@@ -10,6 +10,10 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
@@ -100,15 +104,7 @@ mostly the same as previous example, but **specifying a width** breaks it:
 
 ## with workaround
 
-issue already reported in <https://github.com/executablebooks/jupyter-book/issues/1928>  
-and specifically a workaround is proposed in  
-<https://github.com/executablebooks/jupyter-book/issues/1928#issuecomment-1552719064>
-
-so, same as before, but wrapped inside a `{div}` wrapper; this
-
-* works fine in the html output
-* but breaks in jupyter lab with a `div - Unknown Directive` message
-* follow-up here https://github.com/executablebooks/jupyter-book/issues/1928
+this is now **fully supported** in both jlab and jbook, starting with jupyterlab-myst 2.4.0
 
 `````{admonition} with dropdown, MyST syntax and width
 :class: dropdown seealso
