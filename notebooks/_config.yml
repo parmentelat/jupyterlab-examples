@@ -40,10 +40,12 @@ sphinx:
         - fmt: py:percent
     html_show_copyright: false
     # not quite convincing but...
-    html_extra_path: 
+    html_extra_path:
       - 'media'
       - 'lite'
     jupyterlite_dir: .
+    # to get the corrections to embed in the jlite folder
+    jupyterlite_contents: ../modules/corrections
   extra_extensions:
     - sphinxcontrib.video
     - jupyterlite_sphinx

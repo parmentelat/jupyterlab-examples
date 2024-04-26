@@ -27,16 +27,17 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
-# nbautoeval in jlite
+# nbautoeval in jlite !
 
 +++
 
 ## using a relay notebook
 
-and written in ipynb because for now jupyterlite-sphinx does not handle jupytext notebooks
+and written in ipynb because for now `jupyterlite` does not handle jupytext notebooks  
+on purpose: not using a dropdown in this context
 
-`````{admonition} the pgcd exercise (in a dropdown)
-:class: dropdown
+`````{admonition} the pgcd exercise
+:class: 
 
 ````{div}
 ```{notebooklite} exo-pgcd-nb.ipynb
