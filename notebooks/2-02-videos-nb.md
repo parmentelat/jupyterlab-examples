@@ -87,13 +87,22 @@ for a local video - source needs to be put under `_static`
 # same as above, you can use `remove-input` to hide the code
 
 from ipywidgets import Video
-Video.from_file("_static/under-static.mp4", autoplay=False)
+Video.from_file("_static/under-static.mp4", autoplay=False, width='800px')
 ```
 
 +++ {"tags": []}
 
 ## using sphinxcontrib_video ?
 
+mostly **not usable** for now (neither jlab nor jbook)
+
+- jlab gives "Unknown directive"
+- jbook: requires stuff under `_static` (could be ok) but also does not respect `:width:` directive...
+
+
+````{admonition} a clue, but hard to read
+:class: admonition-small dropdown
+```{div}
 trying to understand what @chirsjewell was meaning in 
 <https://github.com/executablebooks/MyST-Parser/issues/651>
 which would maybe allow to refer to videos not necessarily stored under `_static`, 
@@ -107,16 +116,20 @@ as of 2023 dec, this works only
 | jlab | outside of `_static` | KO | (likewise)
 | jupyter book | under `_static` | OK | cannot be resized though
 | jupyter book | outside of `_static` | KO | a video widget appears but the target file is not there
+```
+````
 
 ---
 
-this one is under `_static/`
+this one is under `_static/` - it works in jbook, except for the width
 
 ```{video} _static/under-static.mp4
 :width: 300px
 ```
 
-this one is under `media/`
+this one is under `media/` - it's not found
 
 ```{video} media/under-media.mp4
+:width: 300px
 ```
+````
