@@ -38,7 +38,7 @@ each comes in two flavours, with or without a notebook name
 ```{jupyterlite}
 :theme: JupyterLab Light
 :width: 100%
-:height: 300px
+:height: 500px
 :prompt: jupyterlite no args
 :prompt_color: green
 ```
@@ -51,7 +51,7 @@ omitting the theme
 
 ```{jupyterlite} hello-world.ipynb
 :width: 100%
-:height: 300px
+:height: 500px
 :prompt: jupyterlite on one notebook
 :prompt_color: blue
 ```

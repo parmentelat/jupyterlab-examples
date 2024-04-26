@@ -35,7 +35,7 @@ using MyST syntax with triple backticks - here with `replite` we can in theory g
 :kernel: python
 :theme: JupyterLab Light
 :width: 100%
-:height: 300px
+:height: 500px
 :prompt: replite
 :prompt_color: gray
 
@@ -56,7 +56,7 @@ like for images this needs to go inside a `{div}` thingy
 :kernel: python
 :theme: JupyterLab Light
 :width: 100%
-:height: 300px
+:height: 500px
 :prompt: replite
 :prompt_color: pink
 

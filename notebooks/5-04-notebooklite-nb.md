@@ -27,7 +27,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
-# `notebooklab`
+# `notebooklite`
 
 each comes in two flavours, with or without a notebook name
 
@@ -39,7 +39,7 @@ each comes in two flavours, with or without a notebook name
 ```{notebooklite}
 :theme: JupyterLab Light
 :width: 100%
-:height: 300px
+:height: 500px
 :prompt: notebooklite no args
 :prompt_color: red
 ```
@@ -50,9 +50,9 @@ each comes in two flavours, with or without a notebook name
 
 omitting the theme
 
-```{notebooklite} test-nb.ipynb
+```{notebooklite} hello-world.ipynb
 :width: 100%
-:height: 300px
+:height: 500px
 :prompt: notebooklite on one notebook
 :prompt_color: orange
 ```
@@ -61,13 +61,20 @@ omitting the theme
 
 ## same inside a dropdown
 
-````{admonition} a notebook inside a dropdown
+probably the way to go; a few caveats:
+
+- needs 2 clicks to open
+- cannot change the size
+
+`````{admonition} same inside a dropdown
 :class: dropdown
 
-```{notebooklite} test-nb.ipynb
+````{div}
+```{notebooklite} hello-world.ipynb
 :width: 100%
-:height: 300px
-:prompt: notebooklite on one notebook
+:height: 500px
+:prompt: notebooklite on one notebook within a dropdown
 :prompt_color: orange
 ```
 ````
+`````

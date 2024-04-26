@@ -31,30 +31,18 @@ HTML(filename="_static/style.html")
 
 on one specific notebook that is jupytext-encoded in Python
 
+apparenty this is a long shot; see a message by `@bollwyvl` on gitter.im in the `jupyterlab/jupyterlab` room on 2024 Apr 26  
+he seems to imply that server-side extensions need to be rewritten in js...
+
+so right now this opens as a text file...
+
 ```{notebooklite} hello-world-jupytext-nb.md
 :width: 100%
-:height: 300px
-:prompt: notebooklite on one notebook
+:height: 500px
+:prompt: a jupytext notebook
 :prompt_color: aquamarine
 ```
 
 +++
 
-## all together
-
-open one jupytext notebook inside a dropdown, and test another jupytext format (here myst)
-
-on one specific notebook that is jupytext-encoded
-
-`````{admonition} a hidden jupytext notebook
-:class: dropdown
-
-````{div}
-```{notebooklite} test-jupytext2-nb.md
-:width: 100%
-:height: 300px
-:prompt: notebooklite on one notebook
-:prompt_color: yellow
-```
-````
-`````
+so *a fortiori* this won't work inside a dropdown..
