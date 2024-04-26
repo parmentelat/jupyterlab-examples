@@ -1,0 +1,11 @@
+calysto_bash
+
+numpy
+pandas
+matplotlib
+seaborn
+ipywidgets >= 8.0
+ipympl
+
+ipythontutor
+nbautoeval

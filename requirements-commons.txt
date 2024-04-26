@@ -1,0 +1,4 @@
+# required by commons.py
+
+colorama
+click

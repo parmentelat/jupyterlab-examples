@@ -1,24 +1,13 @@
-calysto_bash
-
-numpy
-pandas
-matplotlib
-seaborn
-ipywidgets >= 8.0
-ipympl
-
-ipythontutor
-nbautoeval
-
 jupyter
 jupytext
 jupyterlab-myst
+
 jupyterlab-courselevels
 jupyterlab-tpt
 
-# required by commons.py
-colorama
-click
+-r requirements-commons.txt
+
+-r requirements-local.txt
 
 # see also notebooks/requirements-rtd.txt
 #
