@@ -27,6 +27,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
+(label-nbautoeval-dynamic)=
 # nbautoeval in jlite !
 
 +++
@@ -43,7 +44,7 @@ on purpose: not using a dropdown in this context
 ```{notebooklite} exo-pgcd-nb.ipynb
 :width: 100%
 :height: 100vh
-:prompt: the pgcd exercise
+:prompt: click to solve the pgcd exercise
 :prompt_color: blue
 ```
 ````

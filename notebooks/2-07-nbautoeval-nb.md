@@ -33,7 +33,7 @@ HTML(filename="_static/style.html")
 
 ## nbautoeval
 
-here is a first, static, test; there is another way to do this in the jlite section
+here is a first, static, test; there is also another, [better way with a dynamic interface thanks to jupyterlite](label-nbautoeval-dynamic)
 
 ```{code-cell} ipython3
 from exo_pgcd import exo_pgcd
