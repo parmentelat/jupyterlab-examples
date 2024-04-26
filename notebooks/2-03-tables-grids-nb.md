@@ -10,6 +10,10 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
@@ -114,11 +118,37 @@ to fix the above example, we add a `{div}` env around it all
 
 +++
 
-## grids
+## `list-table`
+
+this can come in handy as well; not all the options work in all envs, but that's still often better than regular `table`s  
+see <https://myst-parser.readthedocs.io/en/latest/syntax/tables.html#list-tables> for more options
+
+````{list-table}
+:widths: 15 10 30
+:header-rows: 1
+:stub-columns: 1
+:align: center
+
+* - col1
+  - col2
+  - col3
+* - val11
+  - val12val12
+  - val13val13val13
+* - val21val21
+  - val22val22val22val22
+  - val23val23val23val23val23val23
+
+````
 
 +++
 
-this section requires `pip install jupyterlab-gridwidth`
+## grids
+
++++ {"tags": ["gridwidth-1-3"]}
+
+this section requires `pip install jupyterlab-gridwidth`  
+at this point it works only under jlab, and **not in jbook**
 
 see also <https://github.com/parmentelat/jupyterlab-gridwidth/issues/13>
 
@@ -135,14 +165,14 @@ a cell with a small height
 
 I can't find an easy way for us to be able to take adantage of the space below
 
-+++ {"tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-3"]}
 
 a cell with a small height
 
-+++ {"tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-3"]}
 
 a cell with a small height
 
-+++ {"tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-3"]}
 
 a cell with a small height

@@ -10,6 +10,10 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: React apps basics
 ---
@@ -51,7 +55,10 @@ IFrame(
 
 ## ditto with `hide-input`
 
-the same with the input area hidden with `jupyterlab-hidecell` using `remove-input`
+the same with the input area hidden with 
+
+- the `jupyterlab-hidecell` extension
+- using the `remove-input` cell tag
 
 ```{code-cell} ipython3
 :hide_input: true
@@ -72,7 +79,7 @@ IFrame(
 
 ## local video: use ipywidgets's Video()
 
-for a local video:
+for a local video - source needs to be put under `_static`
 
 ```{code-cell} ipython3
 :tags: []
