@@ -36,7 +36,7 @@ using MyST syntax with triple backticks - here with `replite` we can in theory g
 :theme: JupyterLab Light
 :width: 100%
 :height: 500px
-:prompt: click to start a replite
+:prompt: click to start a replite with numpy
 :prompt_color: gray
 
 print('Hello from a JupyterLite console!')
@@ -49,9 +49,11 @@ print(np.arange(9).reshape((3, 3)))
 
 ## inside dropdowns
 
-like for images this needs to go inside a `{div}` thingy
+like for images this needs to go inside a `{div}` thingy  
+demo'ing pandas as well... NOTE that here `titanic.csv` is under `data/` in the git repo, but we configure `jupyterlite-sphinx` to take its contents from `data/` and eventually `titanic.csv` is in `.` inside the jlite runtime environment)
 
-`````{admonition} a hidden repl
+
+`````{admonition} a hidden repl with pandas this time
 :class: dropdown
 
 ````{div}
@@ -60,10 +62,14 @@ like for images this needs to go inside a `{div}` thingy
 :theme: JupyterLab Light
 :width: 100%
 :height: 500px
-:prompt: click to start a replite
+:prompt: click for a pandas example
 :prompt_color: pink
 
 print('Hello from a JupyterLite console!')
+
+import pandas as pd
+df = pd.read_csv("titanic.csv", index_col="PassengerId")
+df.head()
 ```
 ````
 `````

@@ -45,7 +45,9 @@ sphinx:
       - 'lite'
     jupyterlite_dir: .
     # to get the corrections to embed in the jlite folder
-    jupyterlite_contents: ../modules/corrections
+    jupyterlite_contents: 
+      - ../modules/corrections
+      - data
   extra_extensions:
     - sphinxcontrib.video
     - jupyterlite_sphinx
