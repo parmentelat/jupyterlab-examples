@@ -8,4 +8,4 @@ sphinxcontrib_mermaid
 sphinxcontrib_video
 #
 jupyterlite-pyodide-kernel
-jupyterlite-sphinx
+jupyterlite-sphinx >= 0.13
