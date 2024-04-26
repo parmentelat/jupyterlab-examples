@@ -40,12 +40,14 @@ jtpio's recipes are for pure ReST and .ipynb notebooks, so using MyST for both n
 
 ## references
 
-- mostly jtpio blog here
-<https://blog.jupyter.org/jupyter-everywhere-f8151c2cc6e8>
+- https://jupyterlite-sphinx.readthedocs.io/en/latest/
 
 +++
 
 ## prerequisites
+
+````{admonition} WARNING: not necessarily up-to-date/complete
+:class: danger
 
 at this point, here's the changes made to enable jupyter-lite in the jupyter-book output
 
@@ -56,14 +58,40 @@ at this point, here's the changes made to enable jupyter-lite in the jupyter-boo
   - `sphinx.config.html_extra_path`: append `lite`
   - `sphinx.config.jupyterlite_dir`: set to `.`
   - `sphinx.extra_extensions`: append `jupyterlite_sphinx`
+````
 
 +++
 
 ## status
 
-deploying locally (i.e. reading doc using `file://` protocol) results in many errors like so
+probably not production-ready yet, but kind of working !
 
+### dependencies
+
+at this point we don't get `nbautoeval` pre-installed  
+there are instructions here <https://jupyterlite-sphinx.readthedocs.io/en/latest/configuration.html#pre-installed-packages> on how to do that, but that relies on `jupyterlab-xeus` while we have gone so far with `jupyterlite-pyodide-kernel`  
+which btw does not seem to install on the latest version (getting 0.2.3, while 0.3 is out too)
+
+not a showstopper, as one can do `%pip install nbautoeval` in the notebook and that does the trick
+
+### development: use a http server !
+
+deploying locally (i.e. reading doc using `file://` protocol) results in many errors like so
 > Access to internal resource ... from origin 'null' origin has been blocked by CORS policy
+
+it is **mandatory to use a local http server** to work around CORS limitations and similar business  
+start your server with something like
+```bash
+python -m http.server -d _build/html
+```
+
+### devel: beware of service workers in chrome
+
+also I ended up using safari (!) because somehow on chrome the *service workers* thingy gets in my way - as if everything was cached all the time - and I keep on getting distracted...
+
+### deployment
+
+when deployed on *readthedocs.io* things seem to be working rather fine (with safari again); need to check about chrome in this context.
 
 +++
 

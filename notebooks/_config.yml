@@ -45,7 +45,7 @@ sphinx:
       - 'lite'
     jupyterlite_dir: .
     # to get the corrections to embed in the jlite folder
-    jupyterlite_contents: 
+    jupyterlite_contents:
       - ../modules/corrections
       - data
   extra_extensions:

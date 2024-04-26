@@ -39,7 +39,11 @@ using MyST syntax with triple backticks - here with `replite` we can in theory g
 :prompt: click to start a replite with numpy
 :prompt_color: gray
 
-print('Hello from a JupyterLite console!')
+# please be patient ...
+
+import sys
+major, minor, *_ = sys.version_info
+print(f"Hello from a JupyterLite console! in Python {major}.{minor}\n")
 
 import numpy as np
 print(np.arange(9).reshape((3, 3)))
