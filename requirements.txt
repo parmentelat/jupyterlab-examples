@@ -19,7 +19,6 @@ jupyterlab-tpt
 # required by commons.py
 colorama
 click
-sphinx-exercise
 
 # see also notebooks/requirements-rtd.txt
 #

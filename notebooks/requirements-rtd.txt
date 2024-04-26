@@ -6,6 +6,7 @@ jupyter-book
 # local dep
 sphinxcontrib_mermaid
 sphinxcontrib_video
+sphinx-exercise
 #
 jupyterlite-pyodide-kernel
 jupyterlite-sphinx >= 0.13
