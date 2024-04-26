@@ -36,10 +36,13 @@ using MyST syntax with triple backticks - here with `replite` we can in theory g
 :theme: JupyterLab Light
 :width: 100%
 :height: 500px
-:prompt: replite
+:prompt: click to start a replite
 :prompt_color: gray
 
 print('Hello from a JupyterLite console!')
+
+import numpy as np
+print(np.arange(9).reshape((3, 3)))
 ```
 
 +++
@@ -57,7 +60,7 @@ like for images this needs to go inside a `{div}` thingy
 :theme: JupyterLab Light
 :width: 100%
 :height: 500px
-:prompt: replite
+:prompt: click to start a replite
 :prompt_color: pink
 
 print('Hello from a JupyterLite console!')
