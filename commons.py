@@ -24,14 +24,15 @@ def cli():
 COMMONS = [
     'notebooks/Makefile.book',
     'notebooks/Makefile.prune',
-    'notebooks/Makefile.style',
     'notebooks/Makefile.toc',
     'notebooks/Makefile.norm',
-    'Makefile.pypi',
-    'notebooks/_static/style.css',
+    'notebooks/Makefile.style',
     'notebooks/_static/style_common.css',
+    # as of 2024 apr 26 we should now be good with the following
+    # 'notebooks/_static/style.css',
     'jupytext.toml',
     '.readthedocs.yaml',
+    'Makefile.pypi',
 ]
 
 COMMON_ROOT = Path.home() / 'git/'
@@ -44,7 +45,8 @@ def spot_common(seed):
     for common in COMMONS:
         if seed in common:
             return common
-    raise ValueError(f"no common file found with seed {seed}")
+    print(f"WARNING: could not spot a common file with seed {seed}, using it verbatim")
+    return seed
 
 
 class PrettyTimestamp:
@@ -102,6 +104,9 @@ class Common:
 
         for file in files:
             self.groups[file.sha].append(file)
+
+    def __repr__(self) -> str:
+        return self.common
 
     def is_ok(self):
         return len(self.groups) == 1
@@ -207,19 +212,15 @@ class Common:
                     ]
                     self.run_commands(commands, dry_run, interactive)
 
-
-def list_projects(common=None):
-    """
-    lists all projects that have at least a common file
-    focus on one specific common file if provided
-    """
-    projects = set()
-    commons = [common] if common else COMMONS
-    for common in commons:
-        paths = list(COMMON_ROOT.glob(f"*/{common}"))
-        for path in paths:
-            projects.add(path.relative_to(COMMON_ROOT).parts[0])
-    return projects
+    def list_projects(self):
+        """
+        lists all projects that have that common file
+        """
+        projects = set()
+        for files in self.groups.values():
+            for file in files:
+                projects.add(file.path.relative_to(COMMON_ROOT).parts[0])
+        return projects
 
 
 @cli.command()  # @cli, not @click!
@@ -277,6 +278,10 @@ def diff(commons, rank):
               help='prompts before copying into each project')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
 def adopt(commons, rank, dry_run, interactive):
+    """
+    copies most recent version of a common file to all
+    instances of that file in a group
+    """
     commons = commons or COMMONS
     for common in commons:
         common_obj = Common(common)
@@ -290,6 +295,9 @@ def adopt(commons, rank, dry_run, interactive):
               help='prompts before copying into each project')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
 def commit(commons, dry_run, interactive):
+    """
+    commits the most recent version of a common file in all projects
+    """
     commons = commons or COMMONS
     for common in commons:
         common_obj = Common(common)
@@ -307,15 +315,36 @@ def git_status(commons, verbose):
     commons = commons or COMMONS
     projects = set()
     for common in commons:
-        common = spot_common(common)
-        more = list_projects(common)
+        common = Common(common)
+        more = common.list_projects()
         if verbose:
             print(f"{common=}: in projects {sorted(more)}")
         projects.update(more)
     projects = sorted(projects)
     for project in projects:
         print(f"{4*'-'} {project}")
+        os.system(f"git -C {COMMON_ROOT / project} rev-parse --abbrev-ref HEAD")
+        os.system(f"git -C {COMMON_ROOT / project} la -3")
         os.system(f"git -C {COMMON_ROOT / project} status --short --untracked-files=no")
+
+
+@cli.command()  # @cli, not @click!
+@click.option('-a', '--aggregate', is_flag=True, help='Aggregate all results')
+@click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
+def list_projects(commons, aggregate):
+    """
+    lists all projects that have that common file
+    """
+    aggregated_projects = set()
+    commons = commons or COMMONS
+    for common in commons:
+        common = Common(common)
+        projects = common.list_projects()
+        aggregated_projects.update(projects)
+        if not aggregate:
+            print(f"{4*'-'} {common=}: in projects {" ".join(sorted(projects))}")
+    if aggregate:
+        print(" ".join(sorted(aggregated_projects)))
 
 
 if __name__ == '__main__':
