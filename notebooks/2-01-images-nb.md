@@ -31,6 +31,12 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
+```{code-cell} ipython3
+# but first one code cell and its rendering
+
+10 * 30
+```
+
 several variations on inserting an image
 
 +++ {"tags": []}
