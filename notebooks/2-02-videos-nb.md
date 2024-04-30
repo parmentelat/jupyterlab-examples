@@ -35,7 +35,9 @@ HTML(filename="_static/style.html")
 
 +++ {"tags": []}
 
-## youtube: use IPython IFrame() instead
+(label-video-iframe)=
+
+## youtube: use IPython IFrame()
 
 ```{code-cell} ipython3
 :tags: []

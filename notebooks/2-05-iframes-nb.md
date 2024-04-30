@@ -31,13 +31,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
-## iframes
-
-+++
-
-### raw htaml iframe: NO !
-
-+++
+## raw HTML iframe: NO !
 
 ````{admonition} do not use an html iframe tag
 :class: error 
@@ -53,6 +47,13 @@ not working in jlab, and works in jupyter book only if the target is in `_static
 
 +++
 
-### use IPython's IFrame instead
+## use IPython's IFrame instead
 
-see notebook on videos about an example; works for any other iframe usage of course
+here's an example with an HTML produced with folium, and stored in `_static`  
+it works [with remote URLs too, of course, see e.g. here](label-video-iframe)
+
+```{code-cell} ipython3
+from IPython.display import IFrame
+
+IFrame("_static/addresses-final.html", "500px", "400px")
+```
