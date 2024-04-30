@@ -49,7 +49,7 @@ Y = np.sin(X)
 ```{code-cell} ipython3
 # this produces an interactive plot under jupyter lab
 # with jupyter book, it should also be interactive (and it was working at some point)
-# but as of 2024 at least, we get a static plot
+# but as of Apr 2024 at least, if we keep %matplotlib ipympl we do not get any plot - not even a static one
 # 
 # of potential interest:
 # 
@@ -57,6 +57,10 @@ Y = np.sin(X)
 # https://github.com/executablebooks/jupyter-book/issues/1991
 # https://jupyterbook.org/en/stable/advanced/sphinx.html#custom-css-or-javascript
 # https://jupyterbook.org/en/stable/interactive/interactive.html#ipywidgets
+#
+# for this to render anything at all under jbook, I've had to tweak the jbook config file
+# as per https://github.com/agoose77/phd-thesis/blob/03d6392032e0066aa14e8c3a9a99de9f04762cdd/_config.yml#L185-L193
+# this looks fragile...
 
 %matplotlib ipympl
 ```
