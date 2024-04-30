@@ -123,15 +123,16 @@ as of 2023 dec, this works only
 
 ---
 
-this one is under `_static/` - it works in jbook, except for the width
+this one is under `_static/` - it works in jbook, except for the width `300px`  
+**addendum** it looks like the width needs to be an integer in this context
 
 ```{video} _static/under-static.mp4
-:width: 300px
+:width: 300
 ```
 
 this one is under `media/` - it's not found
 
 ```{video} media/under-media.mp4
-:width: 300px
+:width: 300
 ```
 ````
