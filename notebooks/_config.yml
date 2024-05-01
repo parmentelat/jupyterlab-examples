@@ -1,18 +1,8 @@
 # Jupyter Book settings
 
-title: Jupyter & book
+# title: Jupyter & book
 author: Thierry Parmentelat
 logo: media/jupyter-book-logo-wide.svg
-
-repository:
-  url: https://github.com/parmentelat/jupyterlab-tpt
-  branch: main
-  path_to_book: examples
-
-html:
-  use_repository_button: yes
-  use_edit_page_button: yes
-  use_issues_button: yes
 
 only_build_toc_files: true
 
@@ -38,6 +28,34 @@ sphinx:
       .py:
         - jupytext.reads
         - fmt: py:percent
+    # default is sphinx-book-theme
+    # https://sphinx-book-theme.readthedocs.io/en/stable/reference.html
+    html_theme_options:
+      repository_url: https://github.com/parmentelat/jupyterlab-tpt
+      repository_branch : main
+      path_to_docs: notebooks
+      use_issues_button: yes
+      use_repository_button: yes
+      use_download_button: yes
+      home_page_in_toc: false
+      # can't see this showing
+      toc_title: Index
+      extra_navbar: |
+        <div class="navbar-item">
+          <a href="https://jupyterbook.org" target="_blank" rel="noopener noreferrer">
+            <img src="_static/jupyter-book-logo-wide.svg" alt="Jupyter Book" style="height: 1.5rem; margin-right: 0.5rem;">
+            Jupyter Book in extra navbar
+          </a>
+      # this does show up
+      extra_footer: |
+        <div class="footer">
+          <p>© 2024 Thierry Parmentelat extra footer</p>
+        </div>
+      # can't get the collapsible navbar to work as I want
+      show_navbar_depth: 1
+      max_navbar_depth: 2
+      collapse_navbar: true
+
     html_show_copyright: false
     # not quite convincing but...
     html_extra_path:
