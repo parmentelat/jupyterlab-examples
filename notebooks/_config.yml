@@ -42,7 +42,8 @@ sphinx:
     # not quite convincing but...
     html_extra_path:
       - 'media'
-      - 'lite'
+      # not actually needed, but also we don't expose any content to jlite
+      # - 'lite'
     jupyterlite_dir: .
     # to get the corrections to embed in the jlite folder
     jupyterlite_contents:
