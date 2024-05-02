@@ -10,6 +10,8 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+nbhosting:
+  title: hide-input
 ---
 
 +++ {"slideshow": {"slide_type": "-"}}

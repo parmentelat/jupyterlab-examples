@@ -38,8 +38,10 @@ Y = np.sin(X)
 
 * `%matplotlib notebook` is advertised as no longer working
   and indeed one gets `Javascript Error: IPython is not defined`
+
 * `%matplotlib widget` has been mentioned sometimes;
   it seems to work but it won't render properly in the jupyter book (or was it in vs-code ?)
+
 * so I will settle on using `%matplotlib ipympl`
   which actually sounds like an alias for `widget` but works better in vs-code  
 
@@ -82,8 +84,4 @@ plt.figure()
 plt.imshow(grid)
 plt.figure()
 plt.imshow(1-grid);
-```
-
-```{code-cell} ipython3
-
 ```

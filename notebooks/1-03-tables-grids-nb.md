@@ -10,10 +10,8 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
-language_info:
-  name: python
-  nbconvert_exporter: python
-  pygments_lexer: ipython3
+nbhosting:
+  title: tables & grids
 ---
 
 +++ {"slideshow": {"slide_type": "-"}}
@@ -130,9 +128,11 @@ see <https://myst-parser.readthedocs.io/en/latest/syntax/tables.html#list-tables
 * - col1
   - col2
   - col3
+
 * - val11
   - val12val12
   - val13val13val13
+
 * - val21val21
   - val22val22val22val22
   - val23val23val23val23val23val23
