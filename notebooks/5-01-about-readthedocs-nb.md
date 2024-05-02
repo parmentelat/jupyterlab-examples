@@ -17,7 +17,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: OS & terminal
+  title: an nbhosting title
 ---
 
 Licence CC BY-NC-ND, Thierry Parmentelat
