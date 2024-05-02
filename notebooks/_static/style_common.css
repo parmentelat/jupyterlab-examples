@@ -17,7 +17,8 @@
     }
     /* but keep the upper-left logo to grow too much */
     .navbar-brand.logo>img {
-        max-width: 170px;
+        max-width: 250px;
+        max-height: 170px;
     }
 }
 

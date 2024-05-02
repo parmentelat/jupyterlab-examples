@@ -1,8 +1,11 @@
 # Jupyter Book settings
 
-# title: Jupyter & book
+# this shows up in chrome in the tab title
+title: Jupyter lab & book
+# this shows up at the bottom of the page
 author: Thierry Parmentelat
-logo: media/jupyter-book-logo-wide.svg
+# this shows up in the top left corner
+logo: media/jupyter-lab-book.svg
 
 only_build_toc_files: true
 
@@ -37,8 +40,11 @@ sphinx:
       use_issues_button: yes
       use_repository_button: yes
       use_download_button: yes
+      # set to true: would make sure the entry point
+      # 0-00-intro-nb 'introduction' shows up in the TOC
+      # if set to false, we can still reach it through the logo
       home_page_in_toc: false
-      # can't see this showing
+      # apparently this is used as the RIGHT sidebar toc title
       toc_title: Index
       extra_navbar: |
         <div class="navbar-item">
@@ -56,20 +62,23 @@ sphinx:
       max_navbar_depth: 2
       collapse_navbar: true
 
+    html_favicon: media/flotpython-favicon.svg
     html_show_copyright: false
     # not quite convincing but...
     html_extra_path:
       - 'media'
-      # not actually needed, but also we don't expose any content to jlite
-      # - 'lite'
+      # needed to expose content to jlite
+      - 'lite'
     jupyterlite_dir: .
     # to get the corrections to embed in the jlite folder
     jupyterlite_contents:
       - ../modules/corrections
       - data
+    # required as of 2024 May to get %matplotlib ipympl
+    # to show up (at all, not even interactive) in the book output
     nb_ipywidgets_js:
         # Load RequireJS, used by the IPywidgets for dependency management
-        "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js": 
+        "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js":
             "integrity": "sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA="
             "crossorigin": "anonymous"
         # Load IPywidgets bundle for embedding.
