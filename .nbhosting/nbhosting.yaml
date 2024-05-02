@@ -1,4 +1,3 @@
----
 tracks:
 - description: jlab4 examples
   id: jlab4-nb7
@@ -6,27 +5,26 @@ tracks:
   sections:
   - name: recipes
     notebooks:
-    - 1-[0-9]*.md
+    - notebooks/1-[0-9]*
   - name: graphics & widgets
     notebooks:
-    - 2-[0-9]*.md
+    - notebooks/2-[0-9]*
   - name: styles & spaces
     notebooks:
-    - 3-[0-9]*.md
+    - notebooks/3-[0-9]*
   - name: jupyter lite
     notebooks:
-    - 4-[0-9]*.md
+    - notebooks/4-[0-9]*
   - name: setup
-    # one note on using rtd
     notebooks:
-    - 5-[0-9]*.md
-
+    - notebooks/5-[0-9]*
 builds:
-  - id: nb7
-    name: Notebook 7
-    description: sample notebook
-    directory: examples
-    script: |
-      pip install jupyter-book
-      jupyter-book build .
-    external_url: jupyterlab-examples.external.io
+- id: nb7
+  name: Notebook 7
+  description: sample notebook
+  directory: examples
+  script: |
+    pip install jupyter-book
+    jupyter-book build .
+  # this is the URL where the book will be served
+  external_url: jupyterlab-examples.readthedocs.io

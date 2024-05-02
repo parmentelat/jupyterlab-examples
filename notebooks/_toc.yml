@@ -1,4 +1,5 @@
 format: jb-book
+root: 0-00-intro-nb
 parts:
 - caption: recipes
   chapters:
@@ -12,7 +13,7 @@ parts:
 - caption: jupyter lite
   chapters:
   - glob: 4-[0-9]*
+# one note on using rtd
 - caption: setup
   chapters:
   - glob: 5-[0-9]*
-root: 0-00-intro-nb
