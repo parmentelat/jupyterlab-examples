@@ -2,12 +2,14 @@ jupyter
 jupytext
 jupyterlab-myst
 
-jupyterlab-courselevels
-jupyterlab-tpt
-
+# for commons.py
 -r requirements-commons.txt
 
+# what is needed by the notebooks
 -r requirements-local.txt
+
+# developer convenience
+-r requirements-dev.txt
 
 # see also notebooks/requirements-rtd.txt
 #
