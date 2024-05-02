@@ -22,7 +22,7 @@ builds:
 - id: nb7
   name: sample notebooks
   description: for jlab and jbook
-  external_url: jupyterlab-examples.readthedocs.io
+  external_url: https://jupyterlab-examples.readthedocs.io
 #  directory: notebooks
 #  script: |
 #    pip install jupyter-book
