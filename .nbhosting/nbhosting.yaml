@@ -4,22 +4,20 @@ tracks:
   id: jlab4-nb7
   name: Jlab4 examples
   sections:
-  - name: setup note
-    # one note on using rtd, plus
-    # randomly take one .py and one .md
-    # from the actual courses
-    notebooks:
-    - 1-[0-9]*.md
   - name: recipes
     notebooks:
-    - 2-[0-9]*.md
+    - 1-[0-9]*.md
   - name: graphics & widgets
     notebooks:
-    - 3-[0-9]*.md
+    - 2-[0-9]*.md
   - name: styles & spaces
     notebooks:
-    - 4-[0-9]*.md
+    - 3-[0-9]*.md
   - name: jupyter lite
+    notebooks:
+    - 4-[0-9]*.md
+  - name: setup
+    # one note on using rtd
     notebooks:
     - 5-[0-9]*.md
 

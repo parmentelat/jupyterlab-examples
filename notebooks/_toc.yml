@@ -1,18 +1,18 @@
 format: jb-book
 parts:
-- caption: setup note
-  chapters:
-  - glob: 1-[0-9]*
 - caption: recipes
   chapters:
-  - glob: 2-[0-9]*
+  - glob: 1-[0-9]*
 - caption: graphics & widgets
   chapters:
-  - glob: 3-[0-9]*
+  - glob: 2-[0-9]*
 - caption: styles & spaces
   chapters:
-  - glob: 4-[0-9]*
+  - glob: 3-[0-9]*
 - caption: jupyter lite
+  chapters:
+  - glob: 4-[0-9]*
+- caption: setup
   chapters:
   - glob: 5-[0-9]*
 root: 0-00-intro-nb
