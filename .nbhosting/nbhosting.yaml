@@ -20,11 +20,10 @@ tracks:
     - notebooks/5-[0-9]*
 builds:
 - id: nb7
-  name: Notebook 7
-  description: sample notebook
-  directory: examples
-  script: |
-    pip install jupyter-book
-    jupyter-book build .
-  # this is the URL where the book will be served
+  name: sample notebooks
+  description: for jlab and jbook
   external_url: jupyterlab-examples.readthedocs.io
+#  directory: notebooks
+#  script: |
+#    pip install jupyter-book
+#    jupyter-book build .
