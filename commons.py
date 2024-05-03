@@ -21,21 +21,38 @@ def cli():
     # click.echo(f"Debug mode is {'on' if debug else 'off'}")
     pass
 
+PROJECT_PATTERNS = [
+    "ue12-p23-intro",
+    "ue12-p23-numerique",
+    "ue12-p23-git",
+    "ue12-p23-python",
+    "ue22-p23-web",
+    "flotpython-slides",
+    "flotpython-exos",
+    "jupyterlab-examples",
+]
+
 COMMONS = [
-    'notebooks/Makefile.book',
-    'notebooks/Makefile.prune',
-    'notebooks/Makefile.toc',
-    'notebooks/Makefile.norm',
-    'notebooks/Makefile.style',
-    'notebooks/_static/style_common.css',
-    # as of 2024 apr 26 we should now be good with the following
-    # 'notebooks/_static/style.css',
+    # we search at depths 1 and 2, more leads to too long searching times
+    'Makefile.book',
+    'Makefile.prune',
+    'Makefile.toc',
+    'Makefile.norm',
+    'Makefile.style',
+    'style_common.css',
     'jupytext.toml',
     '.readthedocs.yaml',
-    'Makefile.pypi',
+    # no longer useful with this file as we focus on a specific set of projects
+    # 'Makefile.pypi',
 ]
 
 COMMON_ROOT = Path.home() / 'git/'
+
+PROJECTS = [ p for pattern in PROJECT_PATTERNS
+               for p in COMMON_ROOT.glob(pattern)]
+
+#print(f"Found {len(PROJECTS)} projects")
+# print(PROJECTS)
 
 
 def spot_common(seed):
@@ -78,6 +95,12 @@ class File:
     def short(self):
         return self.path.relative_to(COMMON_ROOT)
 
+    def has_symlink(self):
+        for parent in self.path.parents:
+            if parent.is_symlink():
+                return True
+        return False
+
 class Common:
     """
     finds all instances of a common file
@@ -87,7 +110,12 @@ class Common:
         self.common = spot_common(common)
         self.groups = defaultdict(list)
 
-        paths = list(COMMON_ROOT.glob(f"*/{self.common}"))
+        paths = []
+        for depth in 0, 1, 2, 3:
+            paths += [
+                x for project in PROJECTS
+                for x in project.glob(f"{'*/'*depth}{self.common}")
+            ]
         files = []
 
         for path in paths:
@@ -99,6 +127,7 @@ class Common:
                     PrettyTimestamp(path.stat().st_mtime)))
 
         files.sort()
+        files = [f for f in files if not f.has_symlink()]
         for index, file in enumerate(files):
             file.rank = index
 
