@@ -16,6 +16,7 @@ parts:
 - caption: toc
   chapters:
   - file: 5-toc-plain.md
+    title: a title set in the toc
   - url: https://flotpython-exos-ds.readthedocs.io/en/main/ds-tps/images/README-images1-nb.html
     title: TP images (1/2)
 # one note on using rtd
