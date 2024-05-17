@@ -13,6 +13,11 @@ parts:
 - caption: jupyter lite
   chapters:
   - glob: 4-[0-9]*
+- caption: toc
+  chapters:
+  - file: 5-toc-plain.md
+  - url: https://flotpython-exos-ds.readthedocs.io/en/main/ds-tps/images/README-images1-nb.html
+    title: TP images (1/2)
 # one note on using rtd
 - caption: setup
   chapters:
