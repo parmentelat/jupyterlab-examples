@@ -56,7 +56,7 @@ this requires an extra step **in the sphinx config** ~~so that one can see text 
 mostly we use this to create a link to download an exercise as a zip -- 
 heavily used in `flotpython-exos`
 
-```myst
+```markdown
 {download}`commencez par télécharger le zip<./downloadable.zip>`
 ```
 
@@ -77,7 +77,7 @@ value = "Data Science"
 +++ {"user_expressions": [{"expression": "value", "result": {"status": "ok", "data": {"text/plain": "'Data Science'"}, "metadata": {}}}]}
 
 with this syntax
-```myst
+```markdown
 {eval}`value`
 ```
 we get: today we will learn {eval}`value`

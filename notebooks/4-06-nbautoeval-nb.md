@@ -39,7 +39,7 @@ and written in ipynb because for now `jupyterlite` does not handle jupytext note
 on purpose: not using a dropdown in this context
 
 `````{admonition} the pgcd exercise
-:class: 
+:class: seealso
 
 ````{div}
 ```{notebooklite} exo-pgcd-nb.ipynb

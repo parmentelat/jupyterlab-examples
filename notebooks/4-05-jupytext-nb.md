@@ -27,7 +27,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
-## using jupytext
+# using jupytext
 
 on one specific notebook that is jupytext-encoded in Python
 

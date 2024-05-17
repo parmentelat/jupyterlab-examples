@@ -16,4 +16,4 @@ parts:
 # one note on using rtd
 - caption: setup
   chapters:
-  - glob: 5-[0-9]*
+  - glob: 6-[0-9]*
