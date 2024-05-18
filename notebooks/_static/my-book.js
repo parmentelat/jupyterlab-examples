@@ -10,15 +10,18 @@ const cheatCorrige = () => {
     if (currentLocation.includes("-corrige"))
         // undo: go back to the student version
         newLocation = currentLocation.replace(
-            /(.*)\/\.teacher\/([a-z0-9-]+)-corrige-nb\.html/gm,
+            /(.*)\/\.teacher\/([A-Za-z0-9_-]+)-corrige-nb\.html/gm,
             "$1/$2-nb.html"
         )
     else
         newLocation = currentLocation.replace(
-            /(.*)\/([a-z0-9-]+)-nb\.html/gm,
+            /(.*)\/([A-Za-z0-9_-]+)-nb\.html/gm,
             "$1/.teacher/$2-corrige-nb.html"
     )
-    // console.log(newLocation)
+    if (newLocation === currentLocation) {
+        console.log("from my-book.js: no corrige file found")
+        return
+    }
     window.location.href = newLocation
 }
 
@@ -34,7 +37,7 @@ window.addEventListener('load',
 
     // define a keyboard shortcut to
     const cheatCorrigeShortcut = () => {
-        console.log("from my-book.js: corrige shortcuts")
+        // console.log("from my-book.js: corrige shortcuts")
         document.addEventListener("keydown", (event) => {
             console.log(event)
             if (event.code === "Slash" && event.ctrlKey && event.shiftKey) {
