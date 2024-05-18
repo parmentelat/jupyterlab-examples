@@ -17,7 +17,7 @@ parts:
   chapters:
   - file: 5-01-toc-plain.md
     title: a title set in the toc
-  - file: 5-02-dummy-prune.md
+  - file: 5-02-dummy-prune-nb.md
     title: using nbprune
   - url: https://flotpython-exos-ds.readthedocs.io/en/main/ds-tps/images/README-images1-nb.html
     title: TP images (1/2)

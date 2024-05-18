@@ -6,9 +6,17 @@ const cheatCorrige = () => {
     // the .teacher folder with an extra "corrige-" suffix
     // e.g. "my-book-nb.html" -> ".teacher/my-book-nb-corrige.html"
     const currentLocation = window.location.href
-    const newLocation = currentLocation.replace(
-        /(.*)\/([a-z0-9-]+)-nb\.html/gm,
-        "$1/.teacher/$2-corrige-nb.html"
+    let newLocation
+    if (currentLocation.includes("-corrige"))
+        // undo: go back to the student version
+        newLocation = currentLocation.replace(
+            /(.*)\/\.teacher\/([a-z0-9-]+)-corrige-nb\.html/gm,
+            "$1/$2-nb.html"
+        )
+    else
+        newLocation = currentLocation.replace(
+            /(.*)\/([a-z0-9-]+)-nb\.html/gm,
+            "$1/.teacher/$2-corrige-nb.html"
     )
     // console.log(newLocation)
     window.location.href = newLocation
@@ -28,12 +36,14 @@ window.addEventListener('load',
     const cheatCorrigeShortcut = () => {
         console.log("from my-book.js: corrige shortcuts")
         document.addEventListener("keydown", (event) => {
-            if (event.key === "?" && event.ctrlKey & event.shiftKey) {
+            console.log(event)
+            if (event.code === "Slash" && event.ctrlKey && event.shiftKey) {
                 cheatCorrige()
             }
         })
     }
 
+    // inject class corrige when relevant
     const outlineCorrige = () => {
         if (window.location.href.includes("corrige")) {
             document.body.classList.add("corrige")
