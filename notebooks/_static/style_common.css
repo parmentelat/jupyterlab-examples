@@ -99,3 +99,8 @@ div.prompt.input_prompt, div.prompt.output_prompt {
     font-size: x-small;
     line-height: 1.2;
 }
+
+/* slight gradient for corriges */
+.corrige {
+    background-image: radial-gradient(#BFF6C3, #E0FBE2);
+}

@@ -1,5 +1,6 @@
 
 include Makefile.book
+include Makefile.prune
 include Makefile.style
 include Makefile.toc
 NOTEBOOKS := $(wildcard [0-9]*.md) $(wildcard [0-9]*.py)
