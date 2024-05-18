@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """
 a tool to monitor projects that follow the guidelines in this project
 """
@@ -17,7 +19,7 @@ colorama.init()
 
 @click.group()
 # @click.option('--debug/--no-debug', default=False)
-def cli():
+def commons_cli():
     # click.echo(f"Debug mode is {'on' if debug else 'off'}")
     pass
 
@@ -252,7 +254,7 @@ class Common:
         return projects
 
 
-@cli.command()  # @cli, not @click!
+@commons_cli.command()
 @click.option('-r', '--relative', is_flag=True, help='Display relative paths only')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
 def files(commons, relative):
@@ -269,7 +271,7 @@ def files(commons, relative):
         common_obj.files(relative=relative)
 
 
-@cli.command()  # @cli, not @click!
+@commons_cli.command()
 @click.option('-v', '--verbose', is_flag=True, help='Display details')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
 def summary(commons, verbose):
@@ -285,7 +287,7 @@ def summary(commons, verbose):
             common_obj.summary()
 
 
-@cli.command()  # @cli, not @click!
+@commons_cli.command()
 @click.option('-r', '--rank', default=1, help='Rank of the group to compare with')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
 def diff(commons, rank):
@@ -300,7 +302,7 @@ def diff(commons, rank):
         common_obj.diff(rank)
 
 
-@cli.command()  # @cli, not @click!
+@commons_cli.command()
 @click.option('-r', '--rank', default=0, help='Rank of the source file')
 @click.option('-d', '--dry-run/--no-dry-run', is_flag=True, default=False, help='Dry run')
 @click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
@@ -318,7 +320,7 @@ def adopt(commons, rank, dry_run, interactive):
         common_obj.adopt(rank, dry_run, interactive)
 
 
-@cli.command()  # @cli, not @click!
+@commons_cli.command()
 @click.option('-d', '--dry-run/--no-dry-run', is_flag=True, default=False, help='Dry run')
 @click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
               help='prompts before copying into each project')
@@ -334,7 +336,7 @@ def commit(commons, dry_run, interactive):
         common_obj.commit(dry_run, interactive)
 
 
-@cli.command()  # @cli, not @click!
+@commons_cli.command()
 @click.option('-v', '--verbose', is_flag=True, help='Display details')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
 def git_status(commons, verbose):
@@ -357,7 +359,7 @@ def git_status(commons, verbose):
         os.system(f"git -C {COMMON_ROOT / project} status --short --untracked-files=no")
 
 
-@cli.command()  # @cli, not @click!
+@commons_cli.command()
 @click.option('-a', '--aggregate', is_flag=True, help='Aggregate all results')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
 def list_projects(commons, aggregate):
@@ -377,4 +379,4 @@ def list_projects(commons, aggregate):
 
 
 if __name__ == '__main__':
-    cli()
+    commons_cli()
