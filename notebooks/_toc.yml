@@ -2,9 +2,12 @@ format: jb-book
 root: 0-00-intro-nb
 parts:
 - caption: recipes
+  # must be set on each part
+  numbered: true
   chapters:
   - glob: 1-[0-9]*
 - caption: graphics & widgets
+  # numbering continues from the previous part
   chapters:
   - glob: 2-[0-9]*
 - caption: styles & spaces
