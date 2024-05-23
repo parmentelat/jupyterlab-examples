@@ -7,17 +7,21 @@ author: Thierry Parmentelat
 # this shows up in the top left corner
 logo: media/jupyter-lab-book.svg
 
-only_build_toc_files: true
+# don't set this, we want the corriges to be built too
+# only_build_toc_files: true
 
+# this is to exclude the symlinks that an author might 
+# want to create to see their notebooks in jlab
 exclude_patterns:
-  - "**/.teacher/*"
+  - "**/teacher/*"
 
 execute:
   execute_notebooks: cache
-  exclude_patterns:
-    - "**/*-corrige*"
-    - "**/.teacher/*"
-    - "**/snake*.py"
+  # no need for this in the usual case
+  # exclude_patterns:
+  # - "**/*-corrige*"
+  # - "**/.teacher/*"
+  # - "**/snake*.py"
 
 parse:
   myst_enable_extensions:
