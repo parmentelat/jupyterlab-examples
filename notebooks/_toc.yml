@@ -19,8 +19,12 @@ parts:
     title: a title set in the toc
   - file: 5-02-dummy-prune-nb.md
     title: using nbprune
+  - file: 5-03-part0-umbrella-nb.md
+    sections:
+    - file: 5-03-part1-nb.md
+    - file: 5-03-part2-nb.md
   - url: https://flotpython-exos-ds.readthedocs.io/en/main/ds-tps/images/README-images1-nb.html
-    title: TP images (1/2)
+    title: link to external TP
 # one note on using rtd
 - caption: setup
   chapters:
