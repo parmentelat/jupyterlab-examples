@@ -41,7 +41,7 @@ just be wary to **not insert a (sub)title** inside an admonition, as it would no
 ## no title and no class
 
 
-in its the simplest form, with no class nor shortcut
+in its the simplest form, with no class nor shortcut: this is suboptimal
 
     ````{admonition}
     with no title nor class
