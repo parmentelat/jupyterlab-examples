@@ -101,7 +101,7 @@ mostly **not usable** for now (neither jlab nor jbook)
 ````{admonition} a clue, but hard to read
 :class: admonition-small dropdown
 ```{div}
-trying to understand what @chirsjewell was meaning in 
+trying to understand what `@chrisjewell` was meaning in
 <https://github.com/executablebooks/MyST-Parser/issues/651>
 which would maybe allow to refer to videos not necessarily stored under `_static`, 
 but to no avail so far
