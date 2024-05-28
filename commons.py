@@ -27,10 +27,12 @@ PROJECT_PATTERNS = [
     "ue12-p23-intro",
     "ue12-p23-numerique",
     "ue12-p23-git",
-    "ue12-p23-python",
+    # "ue12-p23-python",
     "ue22-p23-web",
     "flotpython-slides",
-    "flotpython-exos",
+    # "flotpython-exos-archived",
+    "flotpython-exos-python",
+    "flotpython-exos-ds",
     "jupyterlab-examples",
 ]
 
@@ -103,6 +105,19 @@ class File:
                 return True
         return False
 
+    def has_pending_changes(self):
+        dir = self.path.parents[0]
+        name = self.path.name
+        command = f"git -C {dir} diff-index HEAD {name} | grep -q ."
+        return os.system(command) == 0
+
+    def is_pushed(self):
+        dir = self.path.parents[0]
+        name = self.path.name
+        command = f"git -C {dir} merge-base --is-ancestor HEAD @{{u}}"
+        return os.system(command) == 0
+
+
 class Common:
     """
     finds all instances of a common file
@@ -174,7 +189,9 @@ class Common:
             for file in files:
                 if file.rank == 0:
                     print(color, end="")
-                print(f"  {file.rank:02}: {file.nbytes}B  @{file.mtime} {file.short()}")
+                changes = "M" if file.has_pending_changes() else " "
+                needs_push = " " if file.is_pushed() else "P"
+                print(f"{changes}{needs_push} {file.rank:02}: {file.nbytes}B  @{file.mtime} {file.short()}")
                 if file.rank == 0:
                     print(Style.RESET_ALL, end="")
 
