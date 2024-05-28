@@ -134,3 +134,32 @@ this one is under `media/` - it's not found
 :width: 300
 ```
 ````
+
++++
+
+## using mystmd recipe
+
++++
+
+### remote - youtube 
+
+
+```{iframe} https://www.youtube.com/embed/i_ZcP7iNw-U?rel=0&amp;controls=0&amp;showinfo=0
+using the iframe myst directive
+```
+
++++
+
+### local (and not under `_static`)
+
+```{figure} media/under-media.mp4
+this works in myst, but not in jlab
+```
+
++++
+
+### local (and under `_static`)
+
+```{figure} _static/under-static.mp4
+this works in myst, but not in jlab
+```

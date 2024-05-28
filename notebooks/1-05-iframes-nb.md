@@ -55,3 +55,41 @@ from IPython.display import IFrame
 
 IFrame("_static/addresses-final.html", "500px", "400px")
 ```
+
+## mystmd iframe
+
++++
+
+### not working ?
+
+    ```{iframe} _static/addresses-final.html
+    :width: 80%
+    :align: center
+    
+    this is not working as of 2024 may
+    ```
+
+```{iframe} _static/addresses-final.html
+:width: 80%
+:align: center
+
+this is not working as of 2024 may
+```
+
++++
+
+### not working ?
+
+    ```{iframe} media/addresses-final.html
+    :width: 80%
+    :align: center
+    
+    this is not working as of 2024 may
+    ```
+
+```{iframe} media/addresses-final.html
+:width: 80%
+:align: center
+
+this is not working as of 2024 may
+```
