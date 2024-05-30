@@ -44,8 +44,24 @@ $$
 
 ## strikethrough
 
-works in jbook, but not in jlab (go figure)  
-this requires an extra step **in the sphinx config** ~~so that one can see text in strikethrough mode~~
+### pure markdown with double tildes
+
+    ```
+    ~~so that one can see text in strikethrough mode~~
+    ```
+
+works in jbook, but not in jlab (go figure); this requires an extra step **in the sphinx config**  
+it renders : ~~so that one can see text in strikethrough mode~~
+
+### with a MyST role
+
+note that one can also use a MyST role 
+
+```markdown
+{strike}`so that one can see text in strikethrough mode`
+```
+
+it renders: {strike}`so that one can see text in strikethrough mode` (vanishes in jb1?)
 
 +++ {"tags": []}
 
