@@ -68,12 +68,13 @@ Tab two
 ``````{tab-set}
 `````{tab-item} Windows
 
-````{admonition} prep
-:class: 
-
 ```{image} media/windows.png
-:width: 300px
+:width: 80px
 ```
+
+````{admonition} prep
+:class: seealso
+
 ````
 
 ````{admonition} download
@@ -91,13 +92,9 @@ the text
 
 
 `````{tab-item} MacOS
-````{admonition} prep
-:class: 
-
-```{image} media/board-8x8.png
-:width: 300px
+```{image} media/apple.png
+:width: 80px
 ```
-````
 ````{admonition} download
 :class: dropdown
 
@@ -112,13 +109,9 @@ the text
 
 
 `````{tab-item} Linux
-````{admonition} prep
-:class: 
-
 ```{image} media/linux.png
-:width: 300px
+:width: 80px
 ```
-````
 ````{admonition} download
 :class: dropdown
 
@@ -131,3 +124,7 @@ the text
 ````
 `````
 ``````
+
+```{code-cell} ipython3
+
+```
