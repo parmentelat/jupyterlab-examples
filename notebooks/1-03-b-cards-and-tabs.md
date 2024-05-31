@@ -24,7 +24,7 @@ from <https://mystmd.org/guide/dropdowns-cards-and-tabs>
 
 ## grid of cards
 
-primarily to check that it works under jb1 too
+primarily to check that it works under jb1 too - **note** that the headers don't make it to jb1's output
 
 ````{grid} 1 1 2 3
 
@@ -48,18 +48,22 @@ Execute notebook cells, store results, and insert outputs across pages.
 
 ## tabs
 
-### as-is from the doc
-
-````{tab-set}
-```{tab-item} Tab 1
+### almosas-is from the doc
+ 
+`````{tab-set}
+````{tab-item} Tab 1
 :sync: tab1
 Tab one
-```
-```{tab-item} Tab 2
-:sync: tab2
-Tab two
+```{image} media/board-8x8.png
+:width: 200px
+:align: center
 ```
 ````
+````{tab-item} Tab 2
+:sync: tab2
+Tab two
+````
+`````
 
 +++
 
@@ -125,6 +129,34 @@ the text
 `````
 ``````
 
-```{code-cell} ipython3
++++
 
+### synced tabs
+
+using the same names here to check for synchronized selection
+
+``````{tab-set}
+`````{tab-item} Windows
+replica
+
+```{image} media/windows.png
+:width: 80px
 ```
+`````
+
+
+`````{tab-item} MacOS
+replica
+```{image} media/apple.png
+:width: 80px
+```
+`````
+
+
+`````{tab-item} Linux
+replica
+```{image} media/linux.png
+:width: 80px
+```
+`````
+``````

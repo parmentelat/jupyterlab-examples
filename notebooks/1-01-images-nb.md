@@ -158,3 +158,11 @@ some text in the middle, another image (even if it looks the same)
 some text after
 ````
 `````
+
++++
+
+## inline images ?
+
+wondering if one can use an image like it was a font character and
+![](media/board-8x8-micro.png)
+insert it inline; it works but it's a little dumb that one cannot set the size with this syntax...
