@@ -68,3 +68,17 @@ HTML(
 my_table("student", "grade", "jean", 10)
 )
 ```
+
+## with HTML() from ipywidgets
+
+```{code-cell} ipython3
+from ipywidgets import HTML as ipyHTML
+```
+
+```{code-cell} ipython3
+ipyHTML(my_table("student", "grade", "jean", 10))
+```
+
+```{code-cell} ipython3
+
+```
