@@ -24,6 +24,8 @@ from <https://mystmd.org/guide/dropdowns-cards-and-tabs>
 
 ## grid of cards
 
+### texts, from the doc
+
 primarily to check that it works under jb1 too - **note** that the headers don't make it to jb1's output
 
 ````{grid} 1 1 2 3
@@ -43,6 +45,52 @@ Write MyST Markdown to create enriched documents with publication-quality featur
 Execute notebook cells, store results, and insert outputs across pages.
 ```
 ````
+
++++
+
+### 2 images, no size specified
+
+`````{grid} 1 1 2 2
+
+````{card}
+:header: Image content twice
+```{image} media/board-8x8.png
+```
+````
+````{card}
+:header: Image content twice
+```{image} media/board-8x8.png
+```
+````
+
+`````
+
++++
+
+### 3 images, with sizes
+
+`````{grid} 1 1 2 3
+
+````{card}
+:header: Image content twice
+```{image} media/board-8x8.png
+:width: 400px
+```
+````
+````{card}
+:header: Image content twice
+```{image} media/board-8x8.png
+:width: 400px
+```
+````
+````{card}
+:header: Image content twice
+```{image} media/board-8x8.png
+:width: 400px
+```
+````
+
+`````
 
 +++
 
