@@ -24,15 +24,13 @@ def commons_cli():
     pass
 
 PROJECT_PATTERNS = [
-    "ue12-p23-intro",
-    "ue12-p23-numerique",
-    "ue12-p23-git",
-    # "ue12-p23-python",
-    "ue22-p23-web",
-    "flotpython-slides",
-    # "flotpython-exos-archived",
-    "flotpython-exos-python",
+    "ue12-p24-intro",
+    "ue12-p24-numerique",
     "flotpython-exos-ds",
+    "ue12-p24-git",
+    "flotpython-slides",
+    "flotpython-exos-python",
+    "ue22-p24-web",
     "jupyterlab-examples",
 ]
 
