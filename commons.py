@@ -46,6 +46,7 @@ COMMONS = [
     'style_common.css',
     'jupytext.toml',
     '.readthedocs.yaml',
+    'my-book.js',
     # no longer useful with this file as we focus on a specific set of projects
     # 'Makefile.pypi',
 ]
