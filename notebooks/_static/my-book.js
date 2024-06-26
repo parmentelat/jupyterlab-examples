@@ -17,7 +17,7 @@ const cheatCorrige = () => {
         newLocation = currentLocation.replace(
             /(.*)\/([A-Za-z0-9_-]+)-nb\.html/gm,
             "$1/.teacher/$2-corrige-nb.html"
-    )
+        )
     if (newLocation === currentLocation) {
         console.log("from my-book.js: no corrige file found")
         return
@@ -27,13 +27,13 @@ const cheatCorrige = () => {
 
 // run the following code when the page is loaded
 window.addEventListener('load',
-() => {
+    () => {
 
-    const urlTocEntriesOpenInNewTab = () => {
-        console.log("from my-book.js: url-typed toc entries open in a separate tab")
-        document.querySelectorAll("nav a.reference.external")
-            .forEach(node => node.target = "_blank")
-    }
+        const urlTocEntriesOpenInNewTab = () => {
+            console.log("from my-book.js: url-typed toc entries open in a separate tab")
+            document.querySelectorAll("nav a.reference.external")
+                .forEach(node => node.target = "_blank")
+        }
 
         // define a keyboard shortcut to open the corrige file
         // want to be able to communicate the use of Ctrl-Shift-?
@@ -48,25 +48,25 @@ window.addEventListener('load',
         // on a  qwerty I have / being the lowercase and ? the uppercase
         // on an azerty I have , being the lowercase and ? the uppercase
         const lowercases = { '/': true, ',': true }
-    const cheatCorrigeShortcut = () => {
+        const cheatCorrigeShortcut = () => {
             console.log("from my-book.js: define corrige magic shortcut")
-        document.addEventListener("keydown", (event) => {
+            document.addEventListener("keydown", (event) => {
                 console.log("keydown", event)
                 if (event.key in lowercases && event.ctrlKey && event.shiftKey) {
-                cheatCorrige()
-            }
-        })
-    }
-
-    // inject class corrige when relevant
-    const outlineCorrige = () => {
-        if (window.location.href.includes("corrige")) {
-            document.body.classList.add("corrige")
+                    cheatCorrige()
+                }
+            })
         }
-    }
 
-    // our setup
-    urlTocEntriesOpenInNewTab()
-    outlineCorrige()
-    cheatCorrigeShortcut()
-})
+        // inject class corrige when relevant
+        const outlineCorrige = () => {
+            if (window.location.href.includes("corrige")) {
+                document.body.classList.add("corrige")
+            }
+        }
+
+        // our setup
+        urlTocEntriesOpenInNewTab()
+        outlineCorrige()
+        cheatCorrigeShortcut()
+    })
