@@ -35,12 +35,24 @@ window.addEventListener('load',
             .forEach(node => node.target = "_blank")
     }
 
-    // define a keyboard shortcut to
+        // define a keyboard shortcut to open the corrige file
+        // want to be able to communicate the use of Ctrl-Shift-?
+        // very surprisingly, it is incredibly hard to catch a keyboard shortcut
+        // properly i.e. regardless of the keyboard layout
+        // given that keypress is deprecated, we are left with keydown
+        // as beforeinput does not even trigger in our case (not changing the dom)
+        // it turns out that neither the key nor code properties are reliable
+        // across qwerty / azerty / layouts - I haven't tried dvorak
+        // so here's the trade off that I came up with:
+        // the 'key' property seems to always refer to the lowercase character
+        // on a  qwerty I have / being the lowercase and ? the uppercase
+        // on an azerty I have , being the lowercase and ? the uppercase
+        const lowercases = { '/': true, ',': true }
     const cheatCorrigeShortcut = () => {
-        // console.log("from my-book.js: corrige shortcuts")
+            console.log("from my-book.js: define corrige magic shortcut")
         document.addEventListener("keydown", (event) => {
-            console.log(event)
-            if (event.code === "Slash" && event.ctrlKey && event.shiftKey) {
+                console.log("keydown", event)
+                if (event.key in lowercases && event.ctrlKey && event.shiftKey) {
                 cheatCorrige()
             }
         })
