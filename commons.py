@@ -30,7 +30,9 @@ PROJECT_PATTERNS = [
     "ue12-p24-git",
     "flotpython-slides",
     "flotpython-exos-python",
-    "ue22-p24-web",
+# not yet duplicated
+    "ue22-p23-web",
+#    "ue22-p24-web",
     "jupyterlab-examples",
 ]
 
