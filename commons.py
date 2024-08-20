@@ -62,6 +62,22 @@ PROJECTS = [ p for pattern in PROJECT_PATTERNS
                for p in COMMON_ROOT.glob(pattern)]
 
 
+def run_commands(commands, *, dry_run=False, interactive=False):
+    """
+    runs a list of commands
+    """
+    for command in commands:
+        if dry_run:
+            print(f"DRY RUN: {command}")
+            continue
+        if interactive:
+            answer = input(f"{command} - OK [y/N] ? ")
+            if answer.lower() not in ['y', 'yes']:
+                print("skipping")
+                continue
+        os.system(command)
+
+
 def spot_common(seed):
     """
     returns a member of the COMMONS list whose name contains seed
@@ -259,23 +275,6 @@ class Common:
         os.system(f"diff {file0.path} {file1.path}")
 
 
-    @staticmethod
-    def run_commands(commands, dry_run, interactive):
-        """
-        runs a list of commands
-        """
-        for command in commands:
-            if dry_run:
-                print(f"DRY RUN: {command}")
-                continue
-            if interactive:
-                answer = input(f"{command} - OK [y/N] ? ")
-                if answer.lower() not in ['y', 'yes']:
-                    print("skipping")
-                    continue
-            os.system(command)
-
-
     def adopt(self, rank, dry_run, interactive):
         """
         copies a file from one group to all others
@@ -289,7 +288,7 @@ class Common:
             # copy the reference file to all the files in the group
             for file in files:
                 command = f"rsync -a {reference.path} {file.path}"
-                self.run_commands([command], dry_run, interactive)
+                run_commands([command], dry_run=dry_run, interactive=interactive)
 
 
     def list_projects(self):
@@ -431,8 +430,10 @@ def git_status(commons, verbose):
 
 @commons_cli.command()
 @click.option('-n', '--dry-run', is_flag=True, help='display list of projects only')
+@click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
+              help='prompts before copying into each project')
 @click.argument('common', metavar='common', envvar="COMMON", nargs=1, type=str)
-def git_add(common, dry_run):
+def git_add(common, dry_run, interactive):
     """
     run git add in all projects that have that common file - requires exactly one argument
     """
@@ -447,12 +448,9 @@ def git_add(common, dry_run):
         if not file.has_pending_changes('worktree'):
             print(f"skipping project {project} - no pending changes in {common}")
             continue
-        message = " (dry-run)" if dry_run else ""
+        print(f"{4*'-'} {project}")
         command = f"git -C {COMMON_ROOT / project} add {file.path_in_project()}"
-        print(f"{4*'-'} {project}{message}: {command}")
-        if dry_run:
-            continue
-        os.system(command)
+        run_commands([command], dry_run=dry_run, interactive=interactive)
 
 
 @commons_cli.command()
@@ -486,20 +484,19 @@ def git_commit(common, dry_run, interactive):
         if not file.has_pending_changes('index'):
             print(f"skipping project {project} - no pending changes in {common}")
             continue
-        message = " (dry-run)" if dry_run else ""
         commit_message = f"'adopt latest version of {common.common}'"
         command = f"git -C {COMMON_ROOT / project} commit -m{commit_message}"
-        print(f"{4*'-'} {project}{message}: {command}")
-        if dry_run:
-            continue
-        os.system(command)
+        print(f"{4*'-'} {project}")
+        run_commands([command], dry_run=dry_run, interactive=interactive)
 
 
 @commons_cli.command()
 @click.option('-n', '--dry-run', is_flag=True, help='display list of projects only')
+@click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
+              help='prompts before copying into each project')
 @click.option('-f', '--force', is_flag=True, help='Force push')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
-def git_push(commons, dry_run, force):
+def git_push(commons, dry_run, interactive, force):
     """
     run git push in all projects that have that common file
     """
@@ -522,14 +519,10 @@ def git_push(commons, dry_run, force):
         if file0.is_pushed():
             print(f"skipping project {project} - already pushed")
             continue
-        message = " (dry-run)" if dry_run else ""
-        command = f"git -C {COMMON_ROOT / project} push"
-        print(f"{4*'-'} {project}{message}: {command}")
-        if dry_run:
-            continue
-        if force:
-            command += " --force"
-        os.system(command)
+        print(f"{4*'-'} {project}")
+        force_option = " --force" if force else ""
+        command = f"git -C {COMMON_ROOT / project} {force_option} push"
+        run_commands([command], dry_run=dry_run, interactive=interactive)
 
 
 if __name__ == '__main__':
