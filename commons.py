@@ -313,6 +313,40 @@ class Common:
         return None
 
 
+def commons_of_interest(commons):
+    """
+    a utility to avoid having to specify the common over and over again
+    if the 'COMMON' environment variable is set, it is used as a default
+    assuming we have defined
+    @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
+    then this function call
+    commons_of_interest(commons) will return list of Common objects
+    returns a list of Common objects
+    """
+    if not commons:
+        env = os.getenv("COMMON")
+        if env:
+            print(f"using COMMON environment variable {env}")
+            commons = env.split()
+        else:
+            commons = COMMONS
+    return [Common(common) for common in commons]
+
+
+def common_of_interest(common):
+    """
+    same as above but for a single common file
+    returns a Common object
+    """
+    if not common:
+        env = os.getenv("COMMON")
+        if env:
+            print(f"using COMMON environment variable {env}")
+            common = env
+        else:
+            common = COMMONS[0]
+    return Common(common)
+
 
 @commons_cli.command()
 @click.option('-a', '--aggregate', is_flag=True, help='Aggregate all results')
@@ -321,14 +355,13 @@ def list_projects(commons, aggregate):
     """
     lists all projects that have that common file
     """
+    commons = commons_of_interest(commons)
     aggregated_projects = set()
-    commons = commons or COMMONS
     for common in commons:
-        common = Common(common)
         projects = common.list_projects()
         aggregated_projects.update(projects)
         if not aggregate:
-            print(f"{4*'-'} {common=}: found in projects\n{" ".join(sorted(projects))}")
+            print(f"{4*'-'} {common=}: is found in projects:\n{" ".join(sorted(projects))}")
     if aggregate:
         print(" ".join(sorted(aggregated_projects)))
 
@@ -344,26 +377,24 @@ def samples(commons, relative):
 
     if no common file is mentioned, all known common files are processed
     """
-    commons = commons or COMMONS
-    for common in commons:
-        common_obj = Common(common)
+    commons = commons_of_interest(commons)
+    for common_obj in commons:
         print(f"{4*'-'} {common_obj.common}")
         common_obj.files(relative=relative)
 
 
 
 @commons_cli.command()
-@click.option('-v', '--verbose', is_flag=True, help='Display details')
+@click.option('-q', '--quiet', is_flag=True, default=False, help='Display details only if not OK')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
-def summary(commons, verbose):
+def summary(commons, quiet):
     """
     for each mentioned common file, shows how many # versions (groups) are found
     if no common file is mentioned, all known common files are processed
     """
-    commons = commons or COMMONS
-    for common in commons:
-        common_obj = Common(common)
-        if verbose or not common_obj.is_ok():
+    commons = commons_of_interest(commons)
+    for common_obj in commons:
+        if not quiet or not common_obj.is_ok():
             print(f"{4*'-'} {common_obj.common}")
             common_obj.summary()
 
@@ -377,9 +408,8 @@ def diff(commons, rank):
     for each mentioned common file, shows the diff between the most recent group
     and the previous version (or use -r to spot another group)
     """
-    commons = commons or COMMONS
-    for common in commons:
-        common_obj = Common(common)
+    commons = commons_of_interest(commons)
+    for common_obj in commons:
         print(f"{4*'-'} {common_obj.common}")
         common_obj.diff(rank)
 
@@ -396,9 +426,8 @@ def adopt(commons, rank, dry_run, interactive):
     copies most recent version of a common file to all
     instances of that file in a group
     """
-    commons = commons or COMMONS
-    for common in commons:
-        common_obj = Common(common)
+    commons = commons_of_interest(commons)
+    for common_obj in commons:
         print(f"{4*'-'} {common_obj.common}")
         common_obj.adopt(rank, dry_run, interactive)
 
@@ -411,10 +440,9 @@ def git_status(commons, verbose):
     """
     run git status in all projects that have that common file
     """
-    commons = commons or COMMONS
+    commons = commons_of_interest(commons)
     projects = set()
     for common in commons:
-        common = Common(common)
         more = common.list_projects()
         # if verbose:
         #     print(f"{common=}: in projects {sorted(more)}")
@@ -432,13 +460,13 @@ def git_status(commons, verbose):
 @click.option('-n', '--dry-run', is_flag=True, help='display list of projects only')
 @click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
               help='prompts before copying into each project')
-@click.argument('common', metavar='common', envvar="COMMON", nargs=1, type=str)
+@click.argument('common', metavar='common', envvar="COMMON", nargs=1, type=str, required=False)
 def git_add(common, dry_run, interactive):
     """
     run git add in all projects that have that common file - requires exactly one argument
     """
     # transform str into Common object
-    common = Common(common)
+    common = common_of_interest(common)
     projects = sorted(common.list_projects())
     for project in projects:
         file = common.locate_in_project(project)
@@ -457,7 +485,7 @@ def git_add(common, dry_run, interactive):
 @click.option('-n', '--dry-run/--no-dry-run', is_flag=True, default=False, help='Dry run')
 @click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
               help='prompts before copying into each project')
-@click.argument('common', metavar='common', envvar="COMMON", nargs=1, type=str)
+@click.argument('common', metavar='common', envvar="COMMON", nargs=1, type=str, required=False)
 def git_commit(common, dry_run, interactive):
     """
     performs a git commit in all projects that have that common file - requires exactly one argument
@@ -470,7 +498,7 @@ def git_commit(common, dry_run, interactive):
     have been run before to make a visual check that only the common file is a pending addition
     """
     # transform str into Common object
-    common = Common(common)
+    common = common_of_interest(common)
     projects = sorted(common.list_projects())
     for project in projects:
         file = common.locate_in_project(project)
@@ -500,14 +528,11 @@ def git_push(commons, dry_run, interactive, force):
     """
     run git push in all projects that have that common file
     """
-    commons = commons or COMMONS
+    commons = commons_of_interest(commons)
     # used to compute whether a project is pushed
-    common0 = None
+    common0 = commons[0]
     projects = set()
     for common in commons:
-        common = Common(common)
-        # register the first one
-        common0 = common0 or common
         more = common.list_projects()
         projects.update(more)
     projects = sorted(projects)
