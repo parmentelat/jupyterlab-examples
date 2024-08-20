@@ -56,9 +56,6 @@ COMMON_ROOT = Path.home() / 'git/'
 PROJECTS = [ p for pattern in PROJECT_PATTERNS
                for p in COMMON_ROOT.glob(pattern)]
 
-#print(f"Found {len(PROJECTS)} projects")
-# print(PROJECTS)
-
 
 def spot_common(seed):
     """
@@ -97,8 +94,13 @@ class File:
     def __lt__(self, other):
         return self.mtime.timestamp > other.mtime.timestamp
 
+    # typically PosixPath('flotpython-exos-ds/notebooks/_static/style_common.css')
     def short(self):
         return self.path.relative_to(COMMON_ROOT)
+
+    # typically notebooks/_static/style_common.css
+    def path_in_project(self):
+        return '/'.join(self.short().parts[1:])
 
     def has_symlink(self):
         for parent in self.path.parents:
@@ -106,17 +108,26 @@ class File:
                 return True
         return False
 
-    def has_pending_changes(self):
-        dir = self.path.parents[0]
-        name = self.path.name
-        command = f"git -C {dir} diff-index HEAD {name} | grep -q ."
-        return os.system(command) == 0
-
+    # this actually describes the whole repo
     def is_pushed(self):
         dir = self.path.parents[0]
         name = self.path.name
         command = f"git -C {dir} merge-base --is-ancestor HEAD @{{u}}"
         return os.system(command) == 0
+
+    # fine-grained: check for pending changes in any of the 2 areas (added or not)
+    def has_pending_changes(self, area):
+        "area is expected to be either 'index' or 'worktree' or 'any'"
+        assert area in ['index', 'worktree', 'any']
+        dir = self.path.parents[0]
+        name = self.path.name
+        if area == 'index':
+            command = f"git -C {dir} diff-index --quiet --cached HEAD {name}"
+        elif area == 'any':
+            command = f"git -C {dir} diff-index --quiet HEAD {name}"
+        elif area == 'worktree':
+            command = f"git -C {dir} diff-files --quiet -- {name}"
+        return os.system(command) != 0
 
 
 class Common:
@@ -188,13 +199,18 @@ class Common:
         for group, files in self.groups.items():
             print(f"Group {group}")
             for file in files:
-                if file.rank == 0:
-                    print(color, end="")
-                changes = "M" if file.has_pending_changes() else " "
-                needs_push = " " if file.is_pushed() else "P"
-                print(f"{changes}{needs_push} {file.rank:02}: {file.nbytes}B  @{file.mtime} {file.short()}")
-                if file.rank == 0:
-                    print(Style.RESET_ALL, end="")
+                red = file.has_pending_changes('worktree')
+                green = file.has_pending_changes('index')
+                changes = (
+                    f"{Fore.ORANGE}M{Style.RESET_ALL}" if red and green
+                    else f"{Fore.GREEN}M{Style.RESET_ALL}" if green
+                    else f"{Fore.RED}M{Style.RESET_ALL}" if red
+                    else " "
+                )
+                needs_push = " " if file.is_pushed() else f"{Fore.RED}P{Style.RESET_ALL}"
+                linecolor = color if file.rank == 0 else ""
+                print(f"{changes}{needs_push} {file.rank:02}: {linecolor}{file.nbytes}B  @{file.mtime} {file.short()}")
+                print(Style.RESET_ALL, end="")
 
     def diff(self, rank):
         """
@@ -237,29 +253,30 @@ class Common:
                 command = f"rsync -a {reference.path} {file.path}"
                 self.run_commands([command], dry_run, interactive)
 
-    def commit(self, dry_run, interactive):
-        """
-        same logic as adopt, but would do git add / git commit
+    # change of plans, use a simpler approach
+    # def commit(self, dry_run, interactive):
+    #     """
+    #     same logic as adopt, but would do git add / git commit
 
-        the implementation is different though, because at that point
-        we have done 'adopt', so now all the files are in the same group...
-        """
-        print("WARNING: make sure the projects have no pending changes"
-              " in their index before running this command")
-        for group, files in self.groups.items():
-            for file in files:
-                dir = file.path.parents[0]
-                name = file.path.name
-                command = f"git -C {dir} diff-index HEAD {name} | grep -q ."
-                # print(command)
-                needs_commit = os.system(command) == 0
-                # print(f"{file.short()} needs commit: {needs_commit}")
-                if needs_commit:
-                    commands = [
-                        f"git -C {dir} add {name}",
-                        f"git -C {dir} commit -m 'adopt {name} with {__file__}'",
-                    ]
-                    self.run_commands(commands, dry_run, interactive)
+    #     the implementation is different though, because at that point
+    #     we have done 'adopt', so now all the files are in the same group...
+    #     """
+    #     print("WARNING: make sure the projects have no pending changes"
+    #           " in their index before running this command")
+    #     for group, files in self.groups.items():
+    #         for file in files:
+    #             dir = file.path.parents[0]
+    #             name = file.path.name
+    #             command = f"git -C {dir} diff-index HEAD {name} | grep -q ."
+    #             # print(command)
+    #             needs_commit = os.system(command) == 0
+    #             # print(f"{file.short()} needs commit: {needs_commit}")
+    #             if needs_commit:
+    #                 commands = [
+    #                     f"git -C {dir} add {name}",
+    #                     f"git -C {dir} commit -m 'adopt {name} with {__file__}'",
+    #                 ]
+    #                 self.run_commands(commands, dry_run, interactive)
 
     def list_projects(self):
         """
@@ -270,6 +287,35 @@ class Common:
             for file in files:
                 projects.add(file.path.relative_to(COMMON_ROOT).parts[0])
         return projects
+
+    def locate_in_project(self, projectname):
+        """
+        returns a File object or None
+        """
+        for files in self.groups.values():
+            for file in files:
+                if file.path.relative_to(COMMON_ROOT).parts[0] == projectname:
+                    return file
+        return None
+
+
+@commons_cli.command()
+@click.option('-a', '--aggregate', is_flag=True, help='Aggregate all results')
+@click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
+def list_projects(commons, aggregate):
+    """
+    lists all projects that have that common file
+    """
+    aggregated_projects = set()
+    commons = commons or COMMONS
+    for common in commons:
+        common = Common(common)
+        projects = common.list_projects()
+        aggregated_projects.update(projects)
+        if not aggregate:
+            print(f"{4*'-'} {common=}: found in projects\n{" ".join(sorted(projects))}")
+    if aggregate:
+        print(" ".join(sorted(aggregated_projects)))
 
 
 @commons_cli.command()
@@ -322,7 +368,7 @@ def diff(commons, rank):
 
 @commons_cli.command()
 @click.option('-r', '--rank', default=0, help='Rank of the source file')
-@click.option('-d', '--dry-run/--no-dry-run', is_flag=True, default=False, help='Dry run')
+@click.option('-n', '--dry-run/--no-dry-run', is_flag=True, default=False, help='Dry run')
 @click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
               help='prompts before copying into each project')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
@@ -339,22 +385,6 @@ def adopt(commons, rank, dry_run, interactive):
 
 
 @commons_cli.command()
-@click.option('-d', '--dry-run/--no-dry-run', is_flag=True, default=False, help='Dry run')
-@click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
-              help='prompts before copying into each project')
-@click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
-def commit(commons, dry_run, interactive):
-    """
-    commits the most recent version of a common file in all projects
-    """
-    commons = commons or COMMONS
-    for common in commons:
-        common_obj = Common(common)
-        print(f"{4*'-'} {common_obj.common}")
-        common_obj.commit(dry_run, interactive)
-
-
-@commons_cli.command()
 @click.option('-v', '--verbose', is_flag=True, help='Display details')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
 def git_status(commons, verbose):
@@ -366,34 +396,118 @@ def git_status(commons, verbose):
     for common in commons:
         common = Common(common)
         more = common.list_projects()
-        if verbose:
-            print(f"{common=}: in projects {sorted(more)}")
+        # if verbose:
+        #     print(f"{common=}: in projects {sorted(more)}")
         projects.update(more)
     projects = sorted(projects)
+    depth = 3 if verbose else 1
     for project in projects:
         print(f"{4*'-'} {project}")
         os.system(f"git -C {COMMON_ROOT / project} rev-parse --abbrev-ref HEAD")
-        os.system(f"git -C {COMMON_ROOT / project} la -3")
+        os.system(f"git -C {COMMON_ROOT / project} la -{depth}")
         os.system(f"git -C {COMMON_ROOT / project} status --short --untracked-files=no")
 
 
 @commons_cli.command()
-@click.option('-a', '--aggregate', is_flag=True, help='Aggregate all results')
+@click.option('-n', '--dry-run', is_flag=True, help='display list of projects only')
+@click.argument('common', metavar='common', envvar="COMMON", nargs=1, type=str)
+def git_add(common, dry_run):
+    """
+    run git add in all projects that have that common file - requires exactly one argument
+    """
+    # transform str into Common object
+    common = Common(common)
+    projects = sorted(common.list_projects())
+    for project in projects:
+        file = common.locate_in_project(project)
+        if not file:
+            print("OOPS")
+            continue
+        if not file.has_pending_changes('worktree'):
+            print(f"skipping project {project} - no pending changes in {common}")
+            continue
+        message = " (dry-run)" if dry_run else ""
+        command = f"git -C {COMMON_ROOT / project} add {file.path_in_project()}"
+        print(f"{4*'-'} {project}{message}: {command}")
+        if dry_run:
+            continue
+        os.system(command)
+
+
+@commons_cli.command()
+@click.option('-n', '--dry-run/--no-dry-run', is_flag=True, default=False, help='Dry run')
+@click.option('-i', '--interactive/--no-interactive', is_flag=True, default=True,
+              help='prompts before copying into each project')
+@click.argument('common', metavar='common', envvar="COMMON", nargs=1, type=str)
+def git_commit(common, dry_run, interactive):
+    """
+    performs a git commit in all projects that have that common file - requires exactly one argument
+    the message is labelled as 'adopt latest version of <common_file>'
+
+    NOTE: no check is made on the status of the index, it is expected that
+    commons.py git-add <common>
+    and
+    commons.py git-status <common>
+    have been run before to make a visual check that only the common file is a pending addition
+    """
+    # transform str into Common object
+    common = Common(common)
+    projects = sorted(common.list_projects())
+    for project in projects:
+        file = common.locate_in_project(project)
+        if not file:
+            print("OOPS")
+            continue
+        if file.has_pending_changes('worktree'):
+            print(f'WARNING: project {project} still has pending changes in the worktree !! - skipping')
+            continue
+        if not file.has_pending_changes('index'):
+            print(f"skipping project {project} - no pending changes in {common}")
+            continue
+        message = " (dry-run)" if dry_run else ""
+        commit_message = f"'adopt latest version of {common.common}'"
+        command = f"git -C {COMMON_ROOT / project} commit -m{commit_message}"
+        print(f"{4*'-'} {project}{message}: {command}")
+        if dry_run:
+            continue
+        os.system(command)
+
+
+@commons_cli.command()
+@click.option('-n', '--dry-run', is_flag=True, help='display list of projects only')
+@click.option('-f', '--force', is_flag=True, help='Force push')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
-def list_projects(commons, aggregate):
+def git_push(commons, dry_run, force):
     """
-    lists all projects that have that common file
+    run git push in all projects that have that common file
     """
-    aggregated_projects = set()
     commons = commons or COMMONS
+    # used to compute whether a project is pushed
+    common0 = None
+    projects = set()
     for common in commons:
         common = Common(common)
-        projects = common.list_projects()
-        aggregated_projects.update(projects)
-        if not aggregate:
-            print(f"{4*'-'} {common=}: in projects {" ".join(sorted(projects))}")
-    if aggregate:
-        print(" ".join(sorted(aggregated_projects)))
+        # register the first one
+        common0 = common0 or common
+        more = common.list_projects()
+        projects.update(more)
+    projects = sorted(projects)
+    for project in projects:
+        file0 = common0.locate_in_project(project)
+        if not file0:
+            print("OOPS")
+            continue
+        if file0.is_pushed():
+            print(f"skipping project {project} - already pushed")
+            continue
+        message = " (dry-run)" if dry_run else ""
+        command = f"git -C {COMMON_ROOT / project} push"
+        print(f"{4*'-'} {project}{message}: {command}")
+        if dry_run:
+            continue
+        if force:
+            command += " --force"
+        os.system(command)
 
 
 if __name__ == '__main__':
