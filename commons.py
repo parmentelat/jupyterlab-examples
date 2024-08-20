@@ -12,6 +12,8 @@ from collections import defaultdict
 from dataclasses import dataclass
 
 import colorama
+from colorama import Fore, Style
+
 # my first time with click
 import click
 
@@ -20,8 +22,11 @@ colorama.init()
 @click.group()
 # @click.option('--debug/--no-debug', default=False)
 def commons_cli():
+    """
+    click boilerplate
+    """
     # click.echo(f"Debug mode is {'on' if debug else 'off'}")
-    pass
+    # pass
 
 PROJECT_PATTERNS = [
     "ue12-p24-intro",
@@ -94,39 +99,50 @@ class File:
     def __lt__(self, other):
         return self.mtime.timestamp > other.mtime.timestamp
 
-    # typically PosixPath('flotpython-exos-ds/notebooks/_static/style_common.css')
     def short(self):
+        """
+        typically PosixPath('flotpython-exos-ds/notebooks/_static/style_common.css')
+        """
         return self.path.relative_to(COMMON_ROOT)
 
-    # typically notebooks/_static/style_common.css
     def path_in_project(self):
+        """
+        typically notebooks/_static/style_common.css
+        """
         return '/'.join(self.short().parts[1:])
 
     def has_symlink(self):
+        """
+        is this a symlink or is any of its parents a symlink ?
+        """
         for parent in self.path.parents:
             if parent.is_symlink():
                 return True
         return False
 
-    # this actually describes the whole repo
     def is_pushed(self):
-        dir = self.path.parents[0]
-        name = self.path.name
-        command = f"git -C {dir} merge-base --is-ancestor HEAD @{{u}}"
+        """
+        boolean: this actually describes the whole repo
+        """
+        dir_ = self.path.parents[0]
+        # name = self.path.name
+        command = f"git -C {dir_} merge-base --is-ancestor HEAD @{{upstream}}"
         return os.system(command) == 0
 
     # fine-grained: check for pending changes in any of the 2 areas (added or not)
     def has_pending_changes(self, area):
-        "area is expected to be either 'index' or 'worktree' or 'any'"
+        """
+        area is expected to be either 'index' or 'worktree' or 'any'
+        """
         assert area in ['index', 'worktree', 'any']
-        dir = self.path.parents[0]
+        dir_ = self.path.parents[0]
         name = self.path.name
         if area == 'index':
-            command = f"git -C {dir} diff-index --quiet --cached HEAD {name}"
+            command = f"git -C {dir_} diff-index --quiet --cached HEAD {name}"
         elif area == 'any':
-            command = f"git -C {dir} diff-index --quiet HEAD {name}"
+            command = f"git -C {dir_} diff-index --quiet HEAD {name}"
         elif area == 'worktree':
-            command = f"git -C {dir} diff-files --quiet -- {name}"
+            command = f"git -C {dir_} diff-files --quiet -- {name}"
         return os.system(command) != 0
 
 
@@ -135,6 +151,7 @@ class Common:
     finds all instances of a common file
     e.g. common = notebooks/Makefile.book
     """
+
     def __init__(self, common):
         self.common = spot_common(common)
         self.groups = defaultdict(list)
@@ -163,26 +180,41 @@ class Common:
         for file in files:
             self.groups[file.sha].append(file)
 
+
     def __repr__(self) -> str:
         return self.common
 
+
     def is_ok(self):
+        """
+        True if all instances of the common file are identical
+        """
         return len(self.groups) == 1
 
+
     def nb_groups(self):
+        """
+        how many different versions of the common file are found
+        """
         return len(self.groups)
 
+
     def nb_files(self):
+        """
+        how many instances of the common file are found
+        """
         return sum(len(files) for files in self.groups.values())
+
 
     def files(self, relative):
         """
-        prints on stdout all the filename for one sample of each group
+        prints on stdout the filename for one sample of each group
         if relative is True, the filename is relative to COMMON_ROOT
         """
-        for group, files in self.groups.items():
+        for _group, files in self.groups.items():
             file = files[0]
             print(file.path.relative_to(COMMON_ROOT) if relative else file.path)
+
 
     def summary(self):
         """
@@ -192,7 +224,6 @@ class Common:
         - outline which is latest
         """
 
-        from colorama import Fore, Back, Style
         color = Fore.GREEN if self.is_ok() else Fore.RED
 
         print(f"{self.common} has {self.nb_files()} instances in {self.nb_groups()} groups")
@@ -202,15 +233,17 @@ class Common:
                 red = file.has_pending_changes('worktree')
                 green = file.has_pending_changes('index')
                 changes = (
-                    f"{Fore.ORANGE}M{Style.RESET_ALL}" if red and green
+                    f"{Fore.YELLOW}M{Style.RESET_ALL}" if red and green
                     else f"{Fore.GREEN}M{Style.RESET_ALL}" if green
                     else f"{Fore.RED}M{Style.RESET_ALL}" if red
                     else " "
                 )
                 needs_push = " " if file.is_pushed() else f"{Fore.RED}P{Style.RESET_ALL}"
                 linecolor = color if file.rank == 0 else ""
-                print(f"{changes}{needs_push} {file.rank:02}: {linecolor}{file.nbytes}B  @{file.mtime} {file.short()}")
+                print(f"{changes}{needs_push} {file.rank:02}: "
+                      f"{linecolor}{file.nbytes}B  @{file.mtime} {file.short()}")
                 print(Style.RESET_ALL, end="")
+
 
     def diff(self, rank):
         """
@@ -225,18 +258,23 @@ class Common:
         print(f"diff {file0.short()} {file1.short()}")
         os.system(f"diff {file0.path} {file1.path}")
 
+
     @staticmethod
     def run_commands(commands, dry_run, interactive):
+        """
+        runs a list of commands
+        """
         for command in commands:
-                if dry_run:
-                    print(f"DRY RUN: {command}")
+            if dry_run:
+                print(f"DRY RUN: {command}")
+                continue
+            if interactive:
+                answer = input(f"{command} - OK [y/N] ? ")
+                if answer.lower() not in ['y', 'yes']:
+                    print("skipping")
                     continue
-                if interactive:
-                    answer = input(f"{command} - OK [y/N] ? ")
-                    if answer.lower() not in ['y', 'yes']:
-                        print("skipping")
-                        continue
-                os.system(command)
+            os.system(command)
+
 
     def adopt(self, rank, dry_run, interactive):
         """
@@ -253,30 +291,6 @@ class Common:
                 command = f"rsync -a {reference.path} {file.path}"
                 self.run_commands([command], dry_run, interactive)
 
-    # change of plans, use a simpler approach
-    # def commit(self, dry_run, interactive):
-    #     """
-    #     same logic as adopt, but would do git add / git commit
-
-    #     the implementation is different though, because at that point
-    #     we have done 'adopt', so now all the files are in the same group...
-    #     """
-    #     print("WARNING: make sure the projects have no pending changes"
-    #           " in their index before running this command")
-    #     for group, files in self.groups.items():
-    #         for file in files:
-    #             dir = file.path.parents[0]
-    #             name = file.path.name
-    #             command = f"git -C {dir} diff-index HEAD {name} | grep -q ."
-    #             # print(command)
-    #             needs_commit = os.system(command) == 0
-    #             # print(f"{file.short()} needs commit: {needs_commit}")
-    #             if needs_commit:
-    #                 commands = [
-    #                     f"git -C {dir} add {name}",
-    #                     f"git -C {dir} commit -m 'adopt {name} with {__file__}'",
-    #                 ]
-    #                 self.run_commands(commands, dry_run, interactive)
 
     def list_projects(self):
         """
@@ -288,6 +302,7 @@ class Common:
                 projects.add(file.path.relative_to(COMMON_ROOT).parts[0])
         return projects
 
+
     def locate_in_project(self, projectname):
         """
         returns a File object or None
@@ -297,6 +312,7 @@ class Common:
                 if file.path.relative_to(COMMON_ROOT).parts[0] == projectname:
                     return file
         return None
+
 
 
 @commons_cli.command()
@@ -318,10 +334,11 @@ def list_projects(commons, aggregate):
         print(" ".join(sorted(aggregated_projects)))
 
 
+
 @commons_cli.command()
 @click.option('-r', '--relative', is_flag=True, help='Display relative paths only')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
-def files(commons, relative):
+def samples(commons, relative):
     """
     for each mentioned common file, lists one file per group
     with --relative, the filename is relative to COMMON_ROOT
@@ -333,6 +350,7 @@ def files(commons, relative):
         common_obj = Common(common)
         print(f"{4*'-'} {common_obj.common}")
         common_obj.files(relative=relative)
+
 
 
 @commons_cli.command()
@@ -351,6 +369,7 @@ def summary(commons, verbose):
             common_obj.summary()
 
 
+
 @commons_cli.command()
 @click.option('-r', '--rank', default=1, help='Rank of the group to compare with')
 @click.argument('commons', metavar='common', envvar="COMMONS", nargs=-1, type=str)
@@ -364,6 +383,7 @@ def diff(commons, rank):
         common_obj = Common(common)
         print(f"{4*'-'} {common_obj.common}")
         common_obj.diff(rank)
+
 
 
 @commons_cli.command()
@@ -382,6 +402,7 @@ def adopt(commons, rank, dry_run, interactive):
         common_obj = Common(common)
         print(f"{4*'-'} {common_obj.common}")
         common_obj.adopt(rank, dry_run, interactive)
+
 
 
 @commons_cli.command()
@@ -421,7 +442,7 @@ def git_add(common, dry_run):
     for project in projects:
         file = common.locate_in_project(project)
         if not file:
-            print("OOPS")
+            print(f"OOPS - {file} not found in {project}")
             continue
         if not file.has_pending_changes('worktree'):
             print(f"skipping project {project} - no pending changes in {common}")
@@ -456,10 +477,11 @@ def git_commit(common, dry_run, interactive):
     for project in projects:
         file = common.locate_in_project(project)
         if not file:
-            print("OOPS")
+            print(f"OOPS - {file} not found in {project}")
             continue
         if file.has_pending_changes('worktree'):
-            print(f'WARNING: project {project} still has pending changes in the worktree !! - skipping')
+            print(f"WARNING: project {project} "
+                  f"still has pending changes in the worktree !! - skipping")
             continue
         if not file.has_pending_changes('index'):
             print(f"skipping project {project} - no pending changes in {common}")
@@ -495,7 +517,7 @@ def git_push(commons, dry_run, force):
     for project in projects:
         file0 = common0.locate_in_project(project)
         if not file0:
-            print("OOPS")
+            print(f"OOPS - {file0} not found in {project}")
             continue
         if file0.is_pushed():
             print(f"skipping project {project} - already pushed")
