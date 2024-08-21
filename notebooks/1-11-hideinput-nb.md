@@ -1,5 +1,4 @@
 ---
-celltoolbar: Edit Metadata
 jupytext:
   text_representation:
     extension: .md
@@ -12,15 +11,13 @@ language_info:
   name: python
   nbconvert_exporter: python
   pygments_lexer: ipython3
-nbhosting:
-  title: hide-input
 ---
 
 +++ {"slideshow": {"slide_type": "-"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat
 
-+++ {"tags": []}
++++
 
 # hide-input
 
@@ -29,25 +26,23 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++ {"slideshow": {"slide_type": ""}}
 
 this may require some more checking but IIRC the `jupyterlab-courselevels` may be required for this to work properly
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++ {"slideshow": {"slide_type": ""}}
 
 ## code cells
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++ {"slideshow": {"slide_type": ""}}
 
 ````{caution}
-the next code cells are marked as
+the next code cells are marked as `metadata.tags` contains `hide-input`
 
-1. `metadata.tags` contains `hide-input`
-1. and also `metadata.hide_input=true`  
-  see below, this second setting is **only useful with nbclassic**
+on a historical note: in nbclassic this used to be marked with `metadata.hide_input=true`
 ````
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++ {"slideshow": {"slide_type": ""}}
 
 ````{note}
 
@@ -57,16 +52,15 @@ the next code cells are marked as
   this requires the jupyter contrib extensions installed, and the hide-input extension enabled
 ````
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++ {"slideshow": {"slide_type": ""}}
 
 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 2 hide-input cells below
 
 ```{code-cell} ipython3
 ---
-hide_input: true
 slideshow:
   slide_type: ''
-tags: [hide-input]
+tags: [remove-input]
 ---
 # this text should be hidden
 print("should show the output but not the code")
@@ -74,10 +68,9 @@ print("should show the output but not the code")
 
 ```{code-cell} ipython3
 ---
-hide_input: true
 slideshow:
   slide_type: ''
-tags: [hide-input]
+tags: [remove-input]
 ---
 # this text should be hidden
 print('and another hide-input cell')
@@ -95,10 +88,8 @@ with one markdown cell (this very one) and one code cell
 
 ```{code-cell} ipython3
 ---
-scrolled: true
 slideshow:
   slide_type: ''
-tags: []
 ---
 # code (visible)
 print("hello")
@@ -108,17 +99,15 @@ print("hello")
 
 below we repeat these 2 cells, with hide-input set
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["hide-input"], "hide_input": true}
++++ {"slideshow": {"slide_type": ""}, "tags": ["remove-input"]}
 
 a (hidden-input) markdown cell wont show up at all
 
 ```{code-cell} ipython3
 ---
-hide_input: true
-scrolled: true
 slideshow:
   slide_type: ''
-tags: [hide-input]
+tags: [remove-input]
 ---
 # code (hidden-input) will just produce an output, but won't show up
 print("hello")

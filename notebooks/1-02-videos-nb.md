@@ -1,5 +1,4 @@
 ---
-celltoolbar: Edit Metadata
 jupytext:
   text_representation:
     extension: .md
@@ -12,34 +11,26 @@ language_info:
   name: python
   nbconvert_exporter: python
   pygments_lexer: ipython3
-nbhosting:
-  title: videos
 ---
 
-+++ {"slideshow": {"slide_type": "-"}, "tags": []}
++++ {"slideshow": {"slide_type": "-"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat
 
-+++ {"tags": []}
++++
 
 # videos
 
 ```{code-cell} ipython3
-:tags: []
-
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-+++ {"tags": []}
 
 (label-video-iframe)=
 
 ## youtube: use IPython IFrame()
 
 ```{code-cell} ipython3
-:tags: []
-
 from IPython.display import IFrame
 
 # Youtube
@@ -51,8 +42,6 @@ IFrame(
 )
 ```
 
-+++ {"tags": []}
-
 ## ditto with `hide-input`
 
 the same with the input area hidden with 
@@ -61,7 +50,6 @@ the same with the input area hidden with
 - using the `remove-input` cell tag
 
 ```{code-cell} ipython3
-:hide_input: true
 :tags: [remove-input]
 
 from IPython.display import IFrame
@@ -75,22 +63,16 @@ IFrame(
 )
 ```
 
-+++ {"tags": []}
-
 ## local video: use ipywidgets's Video()
 
 for a local video - source needs to be put under `_static`
 
 ```{code-cell} ipython3
-:tags: []
-
 # same as above, you can use `remove-input` to hide the code
 
 from ipywidgets import Video
 Video.from_file("_static/under-static.mp4", autoplay=False, width='800px')
 ```
-
-+++ {"tags": []}
 
 ## using sphinxcontrib_video ?
 
