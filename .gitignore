@@ -1,3 +1,5 @@
 _build/
-.macnb
 .ipynb_checkpoints/
+__pycache__/
+.macnb/
+
