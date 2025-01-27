@@ -217,6 +217,20 @@ however **do not use this** as apparently this requires extra configuration...
 
 +++
 
+## start open
+
+- jbook: ???
+- jlab: no
+
+````{admonition} this should be collapsible but should start open
+:class: dropdown 
+:open:
+
+and some text inside, and changed, to make sure 
+````
+
++++
+
 ## custom style
 
 +++
