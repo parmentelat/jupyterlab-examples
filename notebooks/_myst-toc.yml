@@ -1,0 +1,34 @@
+version: 1
+
+project:
+  toc:
+    - file: 0-00-intro-nb.md
+    - title: recipes
+      numbered: true
+      children:
+        - pattern: 1-[0-9]*
+    - title: graphics & widgets
+      children:
+        - pattern: 2-[0-9]*
+    - title: styles & spaces
+      children:
+        - pattern: 3-[0-9]*
+    - title: jupyter lite
+      children:
+        - pattern: 4-[0-9]*
+    - title: toc
+      children:
+        - file: 5-01-toc-plain.md
+          title: a title set in the toc
+        - file: 5-02-dummy-prune-nb.md
+          title: using nbprune
+        # here we could use the ability to get rid of the umbrella
+        - title: multi-part TP
+          children:
+            - file: 5-03-part1-nb.md
+            - file: 5-03-part2-nb.md
+        - url: https://flotpython-exos-ds.readthedocs.io/en/main/ds-tps/images/README-images1-nb.html
+          title: link to external TP
+    - title: setup
+      children:
+        - pattern: 6-[0-9]*
