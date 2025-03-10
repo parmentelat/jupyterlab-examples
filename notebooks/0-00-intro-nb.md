@@ -24,7 +24,7 @@ HTML(filename="_static/style.html")
 
 # introduction
 
-we're testing the new **jlab4 / nb7** combo, together with the rendering under **jupyter-book** and try to make sure both outputs are consistent
+we're testing **jupyterlab**, together with  the rendering under **jupyter-book v2** (aka mystmd), and try to make sure both outputs are consistent
 
 ```{code-cell} ipython3
 # this is the required piece
