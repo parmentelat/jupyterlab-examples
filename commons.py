@@ -23,20 +23,20 @@ colorama.init()
 # @click.option('--debug/--no-debug', default=False)
 def commons_cli():
     """
-    click boilerplate
+    checks for common files in multiple repos
     """
     # click.echo(f"Debug mode is {'on' if debug else 'off'}")
     # pass
 
 PROJECT_PATTERNS = [
-    "ue12-p24-intro",
-    "ue12-p24-numerique",
+    "ue12-p25-intro-astro",
+    "ue12-p25-numerique",
     "flotpython-exos-ds",
     "ue12-p24-git",
     "flotpython-slides",
     "flotpython-exos-python",
 # not yet duplicated
-    "ue22-p23-web",
+    "ue22-p24-web",
 #    "ue22-p24-web",
     "jupyterlab-examples",
 ]
@@ -53,6 +53,7 @@ COMMONS = [
     '.readthedocs.yaml',
     'my-book.js',
     # no longer useful with this file as we focus on a specific set of projects
+    # plus, this is changing with pyproject.toml
     # 'Makefile.pypi',
 ]
 
