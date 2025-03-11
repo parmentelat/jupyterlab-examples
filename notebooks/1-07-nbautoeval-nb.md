@@ -16,10 +16,6 @@ nbhosting:
   title: nbautoeval
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 +++ {"tags": []}
 
 # nbautoeval
@@ -47,3 +43,7 @@ def pgcd(a, b):
 ```{code-cell} ipython3
 exo_pgcd.correction(pgcd)
 ```
+
++++ {"slideshow": {"slide_type": "-"}}
+
+License CC BY-NC-ND, Thierry Parmentelat

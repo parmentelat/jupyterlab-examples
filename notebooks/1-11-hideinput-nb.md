@@ -13,12 +13,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-+++
-
 # hide-input
 
 ```{code-cell} ipython3
@@ -112,3 +106,7 @@ tags: [remove-input]
 # code (hidden-input) will just produce an output, but won't show up
 print("hello")
 ```
+
++++ {"slideshow": {"slide_type": "-"}}
+
+License CC BY-NC-ND, Thierry Parmentelat

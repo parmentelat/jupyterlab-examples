@@ -19,3 +19,7 @@ language_info:
 +++
 
 nothing to write here - trying to not need this at all...
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

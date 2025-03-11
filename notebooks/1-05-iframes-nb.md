@@ -16,10 +16,6 @@ nbhosting:
   title: iframes
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 +++ {"tags": []}
 
 # iframes
@@ -93,3 +89,7 @@ this is not working as of 2024 may
 
 this is not working as of 2024 may
 ```
+
++++ {"slideshow": {"slide_type": "-"}}
+
+License CC BY-NC-ND, Thierry Parmentelat

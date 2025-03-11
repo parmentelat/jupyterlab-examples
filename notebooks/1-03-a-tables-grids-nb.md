@@ -16,10 +16,6 @@ nbhosting:
   title: tables & grids
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 +++ {"tags": []}
 
 # tables & grids
@@ -176,3 +172,7 @@ a cell with a small height
 +++ {"tags": ["gridwidth-1-3"]}
 
 a cell with a small height
+
++++ {"slideshow": {"slide_type": "-"}}
+
+License CC BY-NC-ND, Thierry Parmentelat

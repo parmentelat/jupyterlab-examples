@@ -45,3 +45,5 @@ your code should
 def graphdict(filename):
     pass
 ```
+
+License CC BY-NC-ND, Thierry Parmentelat

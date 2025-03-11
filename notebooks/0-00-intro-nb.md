@@ -15,8 +15,6 @@ nbhosting:
   title: introduction
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
@@ -63,3 +61,7 @@ and check how that renders in the following contexts
 * notebook 7, although much less crucial at this point  
   note that nb7 runs on top of jlab4, so this is much less problematic than nb classic
 ````
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

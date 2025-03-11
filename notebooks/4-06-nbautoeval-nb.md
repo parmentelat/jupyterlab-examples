@@ -14,8 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 ```{raw-cell}
 ---
 raw_mimetype: ''
@@ -50,3 +48,7 @@ on purpose: not using a dropdown in this context
 ```
 ````
 `````
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

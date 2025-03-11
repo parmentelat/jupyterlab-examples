@@ -102,14 +102,19 @@ same between `prune` (inclusive) and `toc` (exclusive)
 
 ```{list-table}
 :header-rows: 1
+
 * - directive
   - how it works
+
 * - `start-at`
   - inclusive
+
 * - `start-after`
   - exclusive
+
 * - `end-at`
   - inclusive
+
 * - `end-before`
   - exclusive
 ```
@@ -130,6 +135,6 @@ apparently this is hopeless with jbook..
 
 ```
 
-```{code-cell} ipython3
++++
 
-```
+License CC BY-NC-ND, Thierry Parmentelat

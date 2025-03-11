@@ -16,10 +16,6 @@ nbhosting:
   title: admonitions
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 +++ {"tags": []}
 
 # admonitions
@@ -282,3 +278,7 @@ it does not seem to work either
 - in jbook the rendering is unaffected
 ````
 `````
+
++++ {"slideshow": {"slide_type": "-"}}
+
+License CC BY-NC-ND, Thierry Parmentelat

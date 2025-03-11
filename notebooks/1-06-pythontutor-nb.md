@@ -16,10 +16,6 @@ nbhosting:
   title: pythontutor
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 +++ {"tags": []}
 
 # pythontutor
@@ -79,6 +75,6 @@ from ipywidgets import HTML as ipyHTML
 ipyHTML(my_table("student", "grade", "jean", 10))
 ```
 
-```{code-cell} ipython3
++++ {"slideshow": {"slide_type": "-"}}
 
-```
+License CC BY-NC-ND, Thierry Parmentelat

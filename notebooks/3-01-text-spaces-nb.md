@@ -14,8 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 ```{code-cell} ipython3
 :tags: [raises-exception]
 
@@ -182,3 +180,7 @@ the body
 ## the end
 
 to see the last spacing
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

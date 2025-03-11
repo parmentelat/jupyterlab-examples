@@ -16,8 +16,6 @@ nbhosting:
   title: an nbhosting title
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 ```{code-cell} ipython3
 :tags: [raises-exception]
 
@@ -101,3 +99,7 @@ within the rtd builds page, for using the whole width, type in the console
 ```js
 document.querySelector("#content>.wrapper").style.width = "100%"
 ```
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

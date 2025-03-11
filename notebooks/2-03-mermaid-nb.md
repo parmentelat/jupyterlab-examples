@@ -16,10 +16,6 @@ nbhosting:
   title: mermaid
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 +++ {"tags": []}
 
 # mermaid
@@ -190,3 +186,7 @@ gitGraph
     checkout main
     merge devel id: "F" type: HIGHLIGHT
 ```
+
++++ {"slideshow": {"slide_type": "-"}}
+
+License CC BY-NC-ND, Thierry Parmentelat

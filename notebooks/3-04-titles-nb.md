@@ -15,10 +15,6 @@ nbhosting:
   title: toplevel title A
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-+++
-
 # toplevel title A
 
 it seems like notebook classic, with the toc extension enabled, would automatically add numbering to titles
@@ -63,3 +59,7 @@ a paragraph
 +++
 
 another paragraph
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

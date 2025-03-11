@@ -14,8 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 ```{raw-cell}
 ---
 raw_mimetype: ''
@@ -78,3 +76,7 @@ probably the way to go; a few caveats:
 ```
 ````
 `````
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

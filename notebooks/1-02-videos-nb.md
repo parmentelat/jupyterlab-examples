@@ -13,12 +13,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-+++
-
 # videos
 
 ```{code-cell} ipython3
@@ -145,3 +139,7 @@ this works in myst, but not in jlab
 ```{figure} _static/under-static.mp4
 this works in myst, but not in jlab
 ```
+
++++ {"slideshow": {"slide_type": "-"}}
+
+License CC BY-NC-ND, Thierry Parmentelat

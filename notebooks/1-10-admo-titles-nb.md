@@ -14,10 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-+++
-
 # code in admonition title
 
 it seems that not all markdown construction play well when put in an admonition title
@@ -90,3 +86,7 @@ and the admonition is made with backticks - not working in jlab, and not in jboo
 
 ````
 `````
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

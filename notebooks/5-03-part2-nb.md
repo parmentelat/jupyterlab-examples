@@ -19,3 +19,7 @@ language_info:
 +++
 
 this is the second part of the TP
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

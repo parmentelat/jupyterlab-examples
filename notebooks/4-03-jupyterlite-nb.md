@@ -14,8 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 ```{raw-cell}
 ---
 raw_mimetype: ''
@@ -55,3 +53,7 @@ omitting the theme
 :prompt: jupyterlite on one notebook
 :prompt_color: blue
 ```
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

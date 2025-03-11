@@ -19,3 +19,7 @@ language_info:
 +++
 
 this is the first part of the TP
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

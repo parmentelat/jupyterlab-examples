@@ -14,8 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 ```{raw-cell}
 ---
 raw_mimetype: ''
@@ -77,3 +75,7 @@ df.head()
 ```
 ````
 `````
+
++++
+
+License CC BY-NC-ND, Thierry Parmentelat

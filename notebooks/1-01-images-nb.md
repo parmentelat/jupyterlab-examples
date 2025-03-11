@@ -16,10 +16,6 @@ nbhosting:
   title: images
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 +++ {"tags": []}
 
 # images
@@ -166,3 +162,7 @@ some text after
 wondering if one can use an image like it was a font character and
 ![](media/board-8x8-micro.png)
 insert it inline; it works but it's a little dumb that one cannot set the size with this syntax...
+
++++ {"slideshow": {"slide_type": "-"}}
+
+License CC BY-NC-ND, Thierry Parmentelat

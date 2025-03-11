@@ -16,10 +16,6 @@ nbhosting:
   title: miscell MyST
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
 +++ {"tags": []}
 
 # miscell MyST
@@ -107,3 +103,7 @@ import os
 admitting that the `USER` environment variable is set, we can also insert its value: 
 
 ### in a title{eval}: `os.environ['USER']`
+
++++ {"slideshow": {"slide_type": "-"}}
+
+License CC BY-NC-ND, Thierry Parmentelat

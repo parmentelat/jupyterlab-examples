@@ -13,10 +13,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-+++
-
 # matplotlib rendering
 
 ```{code-cell} ipython3
@@ -85,3 +81,5 @@ plt.imshow(grid)
 plt.figure()
 plt.imshow(1-grid);
 ```
+
+License CC BY-NC-ND, Thierry Parmentelat
