@@ -13,12 +13,14 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-# regular notebook (not myst)
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
+# regular notebook (not myst)
+
++++
 
 ## a subtitle
 

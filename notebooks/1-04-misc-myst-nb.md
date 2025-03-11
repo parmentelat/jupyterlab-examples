@@ -16,14 +16,16 @@ nbhosting:
   title: miscell MyST
 ---
 
-+++ {"tags": []}
-
-# miscell MyST
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
++++ {"tags": []}
+
+# miscell MyST
+
++++
 
 ## equations and dollarmath
 

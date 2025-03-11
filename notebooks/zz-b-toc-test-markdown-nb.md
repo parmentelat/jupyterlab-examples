@@ -9,12 +9,14 @@ kernelspec:
   name: python3
 ---
 
-# regular notebook (not myst)
-
 ```{code-cell}
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
+# regular notebook (not myst)
+
++++
 
 ## a subtitle
 

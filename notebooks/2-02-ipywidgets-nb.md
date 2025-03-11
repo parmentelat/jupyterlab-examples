@@ -14,6 +14,11 @@ language_info:
   pygments_lexer: ipython3
 ---
 
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
+
 +++ {"slideshow": {"slide_type": ""}}
 
 # ipywidgets
@@ -22,11 +27,6 @@ curious to see how it goes; in a nushell:
 
 - fine in jlab
 - html output has the widgets,  but they don't interact (frozen output)
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
 
 ```{code-cell} ipython3
 from ipywidgets import interact, interactive, fixed, interact_manual

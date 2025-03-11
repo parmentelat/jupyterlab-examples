@@ -14,10 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-# a pruned TP
-
-+++
-
 to operate the nbprune workflow
 
 the topic is for you to write a graph parser
@@ -39,6 +35,10 @@ your code should
 ```python
 {'s1': [('s2', 10)], 's2': [('s1', 20), ('s3', 30)], 's3': [('s4', 20)]}
 ```
+
++++
+
+# a pruned TP
 
 ```{code-cell} ipython3
 # your code here

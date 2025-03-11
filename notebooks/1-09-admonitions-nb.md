@@ -16,14 +16,16 @@ nbhosting:
   title: admonitions
 ---
 
-+++ {"tags": []}
-
-# admonitions
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
++++ {"tags": []}
+
+# admonitions
+
++++
 
 here's how we use MyST **admonitions**; there are other ways, but these are stable and show up the same in both jlab and jbook, so...
 

@@ -16,14 +16,16 @@ nbhosting:
   title: pythontutor
 ---
 
-+++ {"tags": []}
-
-# pythontutor
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
++++ {"tags": []}
+
+# pythontutor
+
++++
 
 ## ipythontutor
 

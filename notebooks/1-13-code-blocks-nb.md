@@ -14,14 +14,14 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-# code blocks
-
-+++
-
 ## `{code-block}`
 
 prefer to use the `code-block` directive  
 more details here <https://mystmd.org/guide/code>
+
++++
+
+# code blocks
 
 +++
 

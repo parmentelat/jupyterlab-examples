@@ -14,11 +14,11 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-# multi-part TP (1/2)
+this is the first part of the TP
 
 +++
 
-this is the first part of the TP
+# multi-part TP (1/2)
 
 +++
 

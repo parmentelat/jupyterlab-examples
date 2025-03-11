@@ -16,14 +16,14 @@ nbhosting:
   title: images
 ---
 
-+++ {"tags": []}
-
-# images
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
++++ {"tags": []}
+
+# images
 
 ```{code-cell} ipython3
 # but first one code cell and its rendering

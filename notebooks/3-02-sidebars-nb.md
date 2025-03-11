@@ -14,14 +14,16 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-# sidebars and similar
-
-as per <https://jupyterbook.org/en/stable/content/layout.html>
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
+# sidebars and similar
+
+as per <https://jupyterbook.org/en/stable/content/layout.html>
+
++++
 
 ## sidebar
 

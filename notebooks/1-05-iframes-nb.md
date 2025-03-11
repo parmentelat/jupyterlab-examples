@@ -16,14 +16,16 @@ nbhosting:
   title: iframes
 ---
 
-+++ {"tags": []}
-
-# iframes
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
++++ {"tags": []}
+
+# iframes
+
++++
 
 ## raw HTML iframe: NO !
 

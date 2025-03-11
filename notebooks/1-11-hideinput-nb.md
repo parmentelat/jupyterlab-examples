@@ -13,12 +13,12 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-# hide-input
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
+# hide-input
 
 +++ {"slideshow": {"slide_type": ""}}
 

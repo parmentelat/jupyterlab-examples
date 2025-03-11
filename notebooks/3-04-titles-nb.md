@@ -15,14 +15,16 @@ nbhosting:
   title: toplevel title A
 ---
 
-# toplevel title A
-
-it seems like notebook classic, with the toc extension enabled, would automatically add numbering to titles
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
+# toplevel title A
+
+it seems like notebook classic, with the toc extension enabled, would automatically add numbering to titles
+
++++
 
 ## subtitle A
 

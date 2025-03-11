@@ -16,12 +16,14 @@ nbhosting:
   title: courselevels (mostly obso)
 ---
 
-# courselevels (mostly obso)
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
+# courselevels (mostly obso)
+
++++
 
 something we had in place before admonitions; 3 levels defined, + the framed cell business
 

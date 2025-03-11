@@ -13,12 +13,12 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-# matplotlib rendering
-
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
+
+# matplotlib rendering
 
 ```{code-cell} ipython3
 import numpy as np

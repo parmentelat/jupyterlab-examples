@@ -14,10 +14,11 @@ jupyter:
     pygments_lexer: ipython3
 ---
 
-# simplest possible notebook
-
 ```python
 print("hello world")
 ```
+
+# simplest possible notebook
+
 
 License CC BY-NC-ND, Thierry Parmentelat
