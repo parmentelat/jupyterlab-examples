@@ -14,17 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-```{raw-cell}
----
-raw_mimetype: ''
-slideshow:
-  slide_type: ''
-tags: []
----
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # using jupytext
 
 on one specific notebook that is jupytext-encoded in Python

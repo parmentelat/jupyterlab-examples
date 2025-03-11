@@ -14,17 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-```{raw-cell}
----
-raw_mimetype: ''
-slideshow:
-  slide_type: ''
-tags: []
----
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # `jupyterlite`
 
 each comes in two flavours, with or without a notebook name

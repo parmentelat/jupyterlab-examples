@@ -14,13 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-```{code-cell} ipython3
-:tags: [raises-exception]
-
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # miscell spacing & styles
 
 Where does it come from?

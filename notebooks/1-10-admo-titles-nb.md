@@ -14,11 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # code in admonition title
 
 it seems that not all markdown construction play well when put in an admonition title

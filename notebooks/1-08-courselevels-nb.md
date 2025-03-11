@@ -16,11 +16,6 @@ nbhosting:
   title: courselevels (mostly obso)
 ---
 
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # courselevels (mostly obso)
 
 +++

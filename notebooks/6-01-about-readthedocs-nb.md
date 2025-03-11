@@ -16,13 +16,6 @@ nbhosting:
   title: an nbhosting title
 ---
 
-```{code-cell} ipython3
-:tags: [raises-exception]
-
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # initializing readthedocs
 
 setting up the readthedocs project often turns up painful  

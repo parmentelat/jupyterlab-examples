@@ -15,11 +15,6 @@ nbhosting:
   title: introduction
 ---
 
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # introduction
 
 we're testing **jupyterlab**, together with  the rendering under **jupyter-book v2** (aka mystmd), and try to make sure both outputs are consistent

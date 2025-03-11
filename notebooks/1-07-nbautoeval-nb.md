@@ -16,11 +16,6 @@ nbhosting:
   title: nbautoeval
 ---
 
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 +++ {"tags": []}
 
 # nbautoeval

@@ -14,17 +14,6 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-```{raw-cell}
----
-raw_mimetype: ''
-slideshow:
-  slide_type: ''
-tags: []
----
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # Jupyter lite
 
 main objectives
