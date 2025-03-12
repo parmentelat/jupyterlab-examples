@@ -127,7 +127,7 @@ the argument to the `solution` directive is the label of the exercise
 
 +++
 
-````{admonition} autre syntaxe
+````{admonition} other syntax
 :class: seealso
 
 see also an alternative syntax based on `solution-start` / `solution-end` in  

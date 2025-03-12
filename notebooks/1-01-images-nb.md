@@ -79,13 +79,11 @@ same within dropdown admonitions
 
 +++
 
-(label-dropdown-div)=
-## bug reproduction
+## former bugs
 
-mostly the same as previous example, but **specifying a width** breaks it:  
+this now works smoothly, no longer need an extra &lt;div&gt; wrapping the image
 
-* the jupyter output is fine
-* but in the html output, when toggled off, the vertical space is wasted (white)
+### with a width
 
 ````{admonition} with dropdown, MyST syntax and width
 :class: dropdown seealso
@@ -97,26 +95,10 @@ mostly the same as previous example, but **specifying a width** breaks it:
 
 +++
 
-## with workaround
+### more than an image: here some text
 
-this is now **fully supported** in both jlab and jbook, starting with jupyterlab-myst 2.4.0
-
-`````{admonition} with dropdown, MyST syntax and width
+````{admonition} same, but adding text around the image
 :class: dropdown seealso
-````{div}
-```{image} media/board-8x8-small.png
-:width: 500px
-```
-````
-`````
-
-+++
-
-the issue also suggests of problems occurring if the image comes with additional contents like text, let us try this one
-
-`````{admonition} same, but adding text around the image
-:class: dropdown seealso
-````{div}
 some text before
 
 ```{image} media/board-8x8-small.png
@@ -125,11 +107,10 @@ some text before
 
 some text after
 ````
-`````
 
 +++
 
-the issue also suggests of problems occurring if the image comes with additional contents like text, let us try this one
+### several images
 
 `````{admonition} same, with multiple images
 :class: dropdown seealso
@@ -154,9 +135,10 @@ some text after
 
 ## inline images ?
 
-wondering if one can use an image like it was a font character and
-![](media/board-8x8-micro.png)
-insert it inline; it works but it's a little dumb that one cannot set the size with this syntax...
+wondering if one can use an image like it was a font character
+![](media/board-8x8-micro.png) and **insert it inline**; - as of 2025 march this works with jlab but causes line breaks with mystmd/jb2
+
+in any case remember the markdown syntax does not let us set a size...
 
 +++ {"slideshow": {"slide_type": "-"}}
 

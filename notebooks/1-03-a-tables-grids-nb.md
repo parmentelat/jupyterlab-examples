@@ -44,7 +44,7 @@ several variations on using tables and grids
 
 ### using left/right/center markers
 
-properly aligned in jlab, but not in jbook
+properly aligned in jlab and in jb2
 
 | country | capital | joined in |
 | ---: | :---: | :--- |
@@ -74,7 +74,7 @@ testing within plainly visible admonitions - not messing with the size this time
 
 ### inside dropdown admonitions
 
-same within dropdown admonitions; we're experiencing the same bug as with sized images:
+same within dropdown admonitions - works fine in jlab and jb2
 
 ```{admonition} with dropdown and regular markdown
 :class: dropdown
@@ -86,26 +86,6 @@ same within dropdown admonitions; we're experiencing the same bug as with sized 
 | UK | London | 1973 |
 | Spain | Madrid | 1986 |
 ```
-
-+++
-
-### the workaround
-
-to fix the above example, we add a `{div}` env around it all
-
-````{admonition} with dropdown and regular markdown
-:class: dropdown
-
-```{div}
-| country | capital | joined in |
-| ---: | :---: | :--- |
-| Germany | Berlin | 1958 |
-| Italy | Rome | 1958 |
-| France | Paris | 1958 |
-| UK | London | 1973 |
-| Spain | Madrid | 1986 |
-```
-````
 
 +++
 
@@ -137,6 +117,8 @@ see <https://myst-parser.readthedocs.io/en/latest/syntax/tables.html#list-tables
 +++
 
 ## grids
+
+this unfortunately is a jlab only feature
 
 +++ {"tags": ["gridwidth-1-3"]}
 

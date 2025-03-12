@@ -259,7 +259,7 @@ some minor comment that should show up with a smaller font
 
 ### in a div inside admonition
 
-same but now we wrap the admo content within a *div* MyST tag - see also [here in the notebook on images](label-dropdown-div)
+same but now we wrap the admo content within a *div* MyST tag
 
 `````{admonition} in a div inside admonition
 :class: seealso

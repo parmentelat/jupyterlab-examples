@@ -89,7 +89,9 @@ to show stuff - possible an extract - from a local file
 
 +++
 
-### plain inclusion of Makefile
+### plain inclusion of separate file in the repo
+
+apparently this is **hopeless with jlab**; works fine in jb2 though..
 
 ```{literalinclude} Makefile
 ```
@@ -99,6 +101,11 @@ to show stuff - possible an extract - from a local file
 ### partial
 
 same between `prune` (inclusive) and `toc` (exclusive)
+
+```{literalinclude} Makefile
+:start-at: prune
+:end-before: toc
+```
 
 ```{list-table}
 :header-rows: 1
@@ -119,19 +126,12 @@ same between `prune` (inclusive) and `toc` (exclusive)
   - exclusive
 ```
 
-```{literalinclude} Makefile
-:start-at: prune
-:end-before: toc
-```
-
 +++
 
 ### the file name
 
-apparently this is hopeless with jbook..
-
 ```{literalinclude} Makefile
-:filename: Makefile
+:filename: my-fake-name
 
 ```
 

@@ -56,6 +56,7 @@ def my_table(a,b,c,d):
 
 ```{code-cell} ipython3
 # should render a table
+from IPython.display import HTML
 
 HTML(
 my_table("student", "grade", "jean", 10)

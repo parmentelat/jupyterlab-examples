@@ -97,7 +97,7 @@ Execute notebook cells, store results, and insert outputs across pages.
 ## tabs
 
 ### almosas-is from the doc
- 
+
 `````{tab-set}
 ````{tab-item} Tab 1
 :sync: tab1
@@ -116,6 +116,8 @@ Tab two
 +++
 
 ### going deeper
+
+a sketch of our install doc (but was done in astro eventually)
 
 ``````{tab-set}
 `````{tab-item} Windows
@@ -181,11 +183,13 @@ the text
 
 ### synced tabs
 
-using the same names here to check for synchronized selection
+using the `sync` names here to check for synchronized selection
 
 ``````{tab-set}
 `````{tab-item} Windows
-replica
+:sync: windows
+
+replica1
 
 ```{image} media/windows.png
 :width: 80px
@@ -194,7 +198,10 @@ replica
 
 
 `````{tab-item} MacOS
-replica
+:sync: macos
+
+replica1
+
 ```{image} media/apple.png
 :width: 80px
 ```
@@ -202,7 +209,44 @@ replica
 
 
 `````{tab-item} Linux
-replica
+:sync: linux
+
+replica1
+
+```{image} media/linux.png
+:width: 80px
+```
+`````
+``````
+
+``````{tab-set}
+`````{tab-item} Windows
+:sync: windows
+
+replica2
+
+```{image} media/windows.png
+:width: 80px
+```
+`````
+
+
+`````{tab-item} MacOS
+:sync: macos
+
+replica2
+
+```{image} media/apple.png
+:width: 80px
+```
+`````
+
+
+`````{tab-item} Linux
+:sync: linux
+
+replica2
+
 ```{image} media/linux.png
 :width: 80px
 ```

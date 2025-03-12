@@ -33,30 +33,38 @@ $$
 \forall x\in \mathbb{C}
 $$
 
+or with a `{math}` directive
+
+```{math}
+\exists y \in \mathbb{R}
+```
+
 +++
 
 ## strikethrough
 
 ### pure markdown with double tildes
 
-    ```
-    ~~so that one can see text in strikethrough mode~~
-    ```
+```markdown
+~~so that one can see text in strikethrough mode~~
+```
 
-works in jbook, but not in jlab (go figure); this requires an extra step **in the sphinx config**  
-it renders : ~~so that one can see text in strikethrough mode~~
+it renders as : ~~so that one can see text in strikethrough mode~~
+
+well this one is a bit disappointing, no longer works in either jlab or mystmd
+as of 2025 march.. (it used to require  an extra step **in the sphinx config**)
 
 ### with a MyST role
 
-note that one can also use a MyST role 
+note that one can also use a MyST role, and that now works in both jlab and mystmd
 
 ```markdown
 {strike}`so that one can see text in strikethrough mode`
 ```
 
-it renders: {strike}`so that one can see text in strikethrough mode` (vanishes in jb1?)
+it renders: {strike}`so that one can see text in strikethrough mode`
 
-+++ {"tags": []}
++++
 
 ## the MyST download role
 
@@ -97,9 +105,9 @@ import os
 
 +++ {"user_expressions": [{"expression": "os.environ['USER']", "result": {"status": "ok", "data": {"text/plain": "'tparment'"}, "metadata": {}}}]}
 
-admitting that the `USER` environment variable is set, we can also insert its value: 
+admitting that the `USER` environment variable is set, we can also insert its value:
 
-### in a title{eval}: `os.environ['USER']`
+### in a title we get the user id as {eval}`os.environ['USER']`
 
 +++ {"slideshow": {"slide_type": "-"}}
 

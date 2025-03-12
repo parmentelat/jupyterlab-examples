@@ -65,78 +65,39 @@ from ipywidgets import Video
 Video.from_file("_static/under-static.mp4", autoplay=False, width='800px')
 ```
 
-## using sphinxcontrib_video ?
-
-mostly **not usable** for now (neither jlab nor jbook)
-
-- jlab gives "Unknown directive"
-- jbook: requires stuff under `_static` (could be ok) but also does not respect `:width:` directive...
-
-
-````{admonition} a clue, but hard to read
-:class: admonition-small dropdown
-```{div}
-trying to understand what `@chrisjewell` was meaning in
-<https://github.com/executablebooks/MyST-Parser/issues/651>
-which would maybe allow to refer to videos not necessarily stored under `_static`, 
-but to no avail so far
-
-as of 2023 dec, this works only
-
-| env | vid. location | works ? | symptom/comment |
-|-----|---------------|---------|-----------------|
-| jlab | under `_static` | KO |  (video: unknown directive)
-| jlab | outside of `_static` | KO | (likewise)
-| jupyter book | under `_static` | OK | cannot be resized though
-| jupyter book | outside of `_static` | KO | a video widget appears but the target file is not there
-```
-````
-
----
-
-this one is under `_static/` - it works in jbook, except for the width `300px`  
-**addendum** it looks like the width needs to be an integer in this context
-
-```{video} _static/under-static.mp4
-:width: 300
-```
-
-this one is under `media/` - it's not found
-
-```{video} media/under-media.mp4
-:width: 300
-```
-````
-
-+++
-
 ## using mystmd recipe
 
 +++
 
-### remote - youtube 
+### remote - youtube
 
+using the `iframe` myst directive
 
 ```{iframe} https://www.youtube.com/embed/i_ZcP7iNw-U?rel=0&amp;controls=0&amp;showinfo=0
-using the iframe myst directive
+
+works in both jlab and jb2
 ```
 
 +++
 
 ### local (and not under `_static`)
 
+using the `figure` myst directive
+
 ```{figure} media/under-media.mp4
-this works in myst, but not in jlab
+this works in mystmd/jb2, but not in jlab
 ```
 
 +++
 
 ### local (and under `_static`)
 
+using the `figure` myst directive again
+
 ```{figure} _static/under-static.mp4
-this works in myst, but not in jlab
+this works in mystmd/jb2, but not in jlab
 ```
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 License CC BY-NC-ND, Thierry Parmentelat

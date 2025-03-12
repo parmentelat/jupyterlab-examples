@@ -39,9 +39,9 @@ with colons instead of backticks - this works well in jlab, but not in jbook
 
 +++
 
-the code elow breaks it very hard, I keep for next time I want to try it, but for now it is too disruptive
 
 `````bash
+the code below breaks it very hard, I keep for next time I want to try it, but for now it is too disruptive
 
 ````{admonition} the title has `some code`
 
