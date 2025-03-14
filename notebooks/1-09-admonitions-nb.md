@@ -16,7 +16,7 @@ nbhosting:
   title: admonitions
 ---
 
-+++ {"tags": []}
++++
 
 # admonitions
 
@@ -34,7 +34,6 @@ just be wary to **not insert a (sub)title** inside an admonition, as it would no
 +++
 
 ## no title and no class
-
 
 in its the simplest form, with no class nor shortcut: this is suboptimal
 
@@ -176,7 +175,7 @@ just add the `dropdown` class to create a collapsible contents
 
 ````{admonition} this is a collapsible section
 :class: attention dropdown
-    
+
 Where does it come from?
 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
@@ -185,12 +184,12 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
     # and that's why the 4 backticks, btw
     import numpy as np
     import pandas as pd
-    
+
     df = pd.read_csv("titanic.csv")
     ```
 ````
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++
 
 ### using raw HTML
 
@@ -199,7 +198,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 for the record only, it should also be possible to do create collapsible using plain HTML with a `<details>` tag
 
 <details>
-    
+
 <summary>the visible part</summary>
 
 and the rest of the message is just mentioned directly in the &lt;details&gt; tag
@@ -212,11 +211,12 @@ however **do not use this** as apparently this requires extra configuration...
 
 ## start open
 
-- jbook: ???
-- jlab: no
+- add the `:open:` decoration in the admonition directive
+- jlab: to double-check, might work
+- jb2: yes
 
 ````{admonition} this should be collapsible but should start open
-:class: dropdown 
+:class: dropdown
 :open:
 
 and some text inside, and changed, to make sure 
@@ -276,6 +276,6 @@ it does not seem to work either
 ````
 `````
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 License CC BY-NC-ND, Thierry Parmentelat

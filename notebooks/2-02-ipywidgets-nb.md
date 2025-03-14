@@ -14,14 +14,15 @@ language_info:
   pygments_lexer: ipython3
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 # ipywidgets
 
-curious to see how it goes; in a nushell:
+curious to see how it goes; in a nutshell:
 
 - fine in jlab
-- html output has the widgets,  but they don't interact (frozen output)
+- jb1: html output has the widgets,  but they don't interact (frozen output)
+- jb2: not working at all, needs a kernel connection to display the widgets
 
 ```{code-cell} ipython3
 from ipywidgets import interact, interactive, fixed, interact_manual
@@ -49,10 +50,10 @@ a = widgets.IntSlider(value=5, min=0, max=10)
 
 def f1(a):
     display(a)
-    
+
 def f2(a):
     display(a * 2)
-    
+
 out1 = widgets.interactive_output(f1, {'a': a})
 out2 = widgets.interactive_output(f2, {'a': a})
 
@@ -80,7 +81,7 @@ X = np.linspace(0, 4*np.pi, 200)
 def frequency(f):
     plt.clf()
     Y = np.sin(f*X)
-    plt.plot(X, Y)  
+    plt.plot(X, Y)
     plt.show()
 ```
 
