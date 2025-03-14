@@ -17,14 +17,27 @@ nbhosting:
 
 # introduction
 
-we're testing **jupyterlab**, together with  the rendering under **jupyter-book v2** (aka mystmd), and try to make sure both outputs are consistent
+we're testing **jupyterlab**, together with  the rendering under **jupyter-book v2** (aka `mystmd`), and try to make sure both outputs are consistent
 
 ```{code-cell} ipython3
 # this is the required piece
 #%pip show jupyterlab-myst jupyterlab-jupytext jupyterlab-courselevels
 ```
 
-+++ {"tags": [], "jp-MarkdownHeadingCollapsed": true}
+## published on github.io
+
+[![the badge](https://github.com/flotpython/jupyterlab-examples/actions/workflows/github-pages.yml/badge.svg) on https://flotpython.github.io/jupyterlab-examples](https://flotpython.github.io/jupyterlab-examples)
+
+## formerly on readthedocs.io
+
+but that's currently no longer an option with jb2, so for the record
+
+- last version on readthedocs.io was `jb1`
+[![the badge](https://readthedocs.org/projects/jupyterlab-examples/badge/?version=jb1) on https://jupyterlab-examples.readthedocs.io/en/jb1/](https://jupyterlab-examples.readthedocs.io/en/jb1/)
+- last build with `main` is no longer available since it targets jb2
+![the badge](https://readthedocs.org/projects/jupyterlab-examples/badge/?version=main)
+
++++
 
 ````{admonition} what we do in this series of sample notebooks
 :class: important
@@ -53,8 +66,6 @@ and check how that renders in the following contexts
 * jupyter book output, which is now our primary output medium
 * jlab4, with a cocktail of extensions, at least
   * `jupytext`, `jupyterlab-myst`, and more optionnally now, `jupyterlab-courselevels`
-* notebook 7, although much less crucial at this point  
-  note that nb7 runs on top of jlab4, so this is much less problematic than nb classic
 ````
 
 +++
