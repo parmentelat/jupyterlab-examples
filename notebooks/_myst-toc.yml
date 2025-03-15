@@ -4,7 +4,8 @@ project:
   toc:
     - file: 0-00-intro-nb.md
     - title: recipes
-      numbered: true
+      # not (yet?) supported as of 2025 march
+      # numbered: true
       children:
         - pattern: 1-[0-9]*
     - title: graphics & widgets

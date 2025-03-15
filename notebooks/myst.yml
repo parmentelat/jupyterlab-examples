@@ -36,6 +36,7 @@ site:
     # very visible in the header
     logo_text: "flotpython: jlab examples"
     style: "_static/style.css"
+    folders: true
 
 extends:
   - _myst-toc.yml
