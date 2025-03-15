@@ -49,6 +49,6 @@ def pgcd(a, b):
 exo_pgcd.correction(pgcd)
 ```
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 License CC BY-NC-ND, Thierry Parmentelat

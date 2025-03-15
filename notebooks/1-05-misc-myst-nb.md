@@ -109,6 +109,6 @@ admitting that the `USER` environment variable is set, we can also insert its va
 
 ### in a title we get the user id as {eval}`os.environ['USER']`
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 License CC BY-NC-ND, Thierry Parmentelat

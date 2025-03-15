@@ -49,7 +49,7 @@ not working in jlab, and works in jupyter book only if the target is in `_static
 
 ## use IPython's IFrame instead
 
-it works [with remote URLs, like we'ne seen about videos](label-video-iframe)
+it works [with remote URLs, like we'ne seen about videos](#label-video-iframe)
 
 with local URLs though, it's an issue
 
@@ -78,7 +78,7 @@ this is not working as of 2025 march
 
     ```{iframe} _static/addresses-final.html
     ```
-    
+
 ```{iframe} _static/addresses-final.html
 :width: 400px
 :height: 300px

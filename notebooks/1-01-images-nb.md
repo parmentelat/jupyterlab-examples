@@ -140,6 +140,6 @@ wondering if one can use an image like it was a font character
 
 in any case remember the markdown syntax does not let us set a size...
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 License CC BY-NC-ND, Thierry Parmentelat

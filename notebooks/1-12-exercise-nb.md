@@ -156,6 +156,6 @@ I don't have a very stable way to present solutions, here's one suboptimal way t
 the solution
 ````
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 License CC BY-NC-ND, Thierry Parmentelat

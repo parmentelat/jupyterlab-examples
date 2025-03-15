@@ -184,6 +184,6 @@ gitGraph
     merge devel id: "F" type: HIGHLIGHT
 ```
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 License CC BY-NC-ND, Thierry Parmentelat

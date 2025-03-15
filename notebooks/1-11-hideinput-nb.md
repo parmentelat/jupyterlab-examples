@@ -15,15 +15,15 @@ language_info:
 
 # hide-input
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 this may require some more checking but IIRC the `jupyterlab-courselevels` may be required for this to work properly
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## code cells
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ````{caution}
 the next code cells are marked as `metadata.tags` contains `hide-input`
@@ -31,7 +31,7 @@ the next code cells are marked as `metadata.tags` contains `hide-input`
 on a historical note: in nbclassic this used to be marked with `metadata.hide_input=true`
 ````
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ````{note}
 
@@ -41,14 +41,12 @@ on a historical note: in nbclassic this used to be marked with `metadata.hide_in
   this requires the jupyter contrib extensions installed, and the hide-input extension enabled
 ````
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 2 hide-input cells below
 
 ```{code-cell} ipython3
 ---
-slideshow:
-  slide_type: ''
 tags: [remove-input]
 ---
 # this text should be hidden
@@ -57,8 +55,6 @@ print("should show the output but not the code")
 
 ```{code-cell} ipython3
 ---
-slideshow:
-  slide_type: ''
 tags: [remove-input]
 ---
 # this text should be hidden
@@ -76,10 +72,6 @@ print('and another hide-input cell')
 with one markdown cell (this very one) and one code cell
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 # code (visible)
 print("hello")
 ```
@@ -88,20 +80,18 @@ print("hello")
 
 below we repeat these 2 cells, with hide-input set
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["remove-input"]}
++++ {"tags": ["remove-input"]}
 
 a (hidden-input) markdown cell wont show up at all
 
 ```{code-cell} ipython3
 ---
-slideshow:
-  slide_type: ''
 tags: [remove-input]
 ---
 # code (hidden-input) will just produce an output, but won't show up
 print("hello")
 ```
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 License CC BY-NC-ND, Thierry Parmentelat

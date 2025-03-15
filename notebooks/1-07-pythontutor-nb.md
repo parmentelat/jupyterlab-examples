@@ -73,6 +73,6 @@ from ipywidgets import HTML as ipyHTML
 ipyHTML(my_table("student", "grade", "jean", 10))
 ```
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 License CC BY-NC-ND, Thierry Parmentelat
